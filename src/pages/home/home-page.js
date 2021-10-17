@@ -1,16 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import Layout from "../../components/layout/layout";
 import {makeStyles} from "@mui/styles";
 import {
     Box,
-    Button,
+    Button, Card, CardContent,
     Container,
     Divider,
     Grid,
     List,
     ListItem,
     ListItemAvatar,
-    ListItemText,
+    ListItemText, Stack, TextField,
     Typography
 } from "@mui/material";
 import {ChevronRight, Lightbulb} from "@mui/icons-material";
@@ -105,6 +105,26 @@ const HomePage = () => {
     const {clients} = useSelector(selectClients);
 
     const dispatch = useDispatch();
+
+    const [contact, setContact] = useState({});
+    const [error, setError] = useState({});
+    const {firstName, lastName, email, phone, subject, message} = contact;
+
+    const handleContactChange = event => {
+        setContact({...contact, [event.target.name]: event.target.value});
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        if (!firstName) {
+            setError({error, firstName: 'First name required'});
+            return;
+        } else {
+            setError({error, firstName: null});
+        }
+
+        console.log(contact);
+    }
 
     return (
         <Layout>
@@ -350,69 +370,161 @@ const HomePage = () => {
 
             <Box pb={8} pt={8}>
                 <Container>
-                    <Typography mb={2} fontWeight='bold' variant="body2" align="center">Get a free Quote</Typography>
-                    <Typography mb={2} variant="h5" align="center">
-                        What Can We Do?
-                    </Typography>
-                    <Grid mb={2} container={true} justifyContent="center">
-                        <Grid item={true}>
-                            <Divider
-                                variant="middle"
-                                sx={{
-                                    justifyContent: "center",
-                                    backgroundColor: "secondary.main",
-                                    height: 5,
-                                    width: 100
-                                }}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Typography mb={2} variant="body2" align="center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
-                        mattis, pulvinar dapibus leo.
-                    </Typography>
-                    <Grid container={true} spacing={3}>
-                        {services.slice(0, 3).map((service, index) => {
-                            return (
-                                <Grid key={index} item={true} xs={12} md={4}>
-                                    <Service service={service}/>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
-                    <Grid container={true} justifyContent="flex-end">
-                        <Grid item={true}>
-                            <Link
-                                className={classes.link}
-                                to="/services"
-                                onClick={() => dispatch(UI_ACTION_CREATORS.changeActivePath('/services'))}>
-                                <Button
-                                    variant="text"
-                                    size="large"
-                                    endIcon={<ChevronRight/>}>
-                                    View all Services
-                                </Button>
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <Typography mb={2} fontWeight='bold' variant="h5" align="center">Get a free Quote</Typography>
+                    <Card elevation={0}>
+                        <CardContent>
+                            <form onSubmit={handleSubmit}>
+                                <Stack spacing={1}>
+                                    <Grid container={true} justifyContent="space-between">
+                                        <Grid item={true} xs={12} md={5.9}>
+                                            <TextField
+                                                required={true}
+                                                onChange={handleContactChange}
+                                                value={firstName}
+                                                label="First Name"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="First Name"
+                                                name="firstName"
+                                                error={Boolean(error.firstName)}
+                                                helperText={error.firstName}
+                                                type="text"
+                                                size="medium"
+                                                margin="dense"
+                                            />
+                                        </Grid>
+                                        <Grid item={true} xs={12} md={5.9}>
+                                            <TextField
+                                                required={true}
+                                                onChange={handleContactChange}
+                                                value={lastName}
+                                                label="Last Name"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="Last Name"
+                                                name="lastName"
+                                                error={Boolean(error.lastName)}
+                                                helperText={error.lastName}
+                                                type="text"
+                                                size="medium"
+                                                margin="dense"
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                    <TextField
+                                        required={true}
+                                        onChange={handleContactChange}
+                                        value={email}
+                                        label="Email"
+                                        fullWidth={true}
+                                        variant="outlined"
+                                        placeholder="Email"
+                                        name="lastName"
+                                        error={Boolean(error.email)}
+                                        helperText={error.email}
+                                        type="email"
+                                        size="medium"
+                                        margin="dense"
+                                    />
+
+                                    <TextField
+                                        required={true}
+                                        onChange={handleContactChange}
+                                        value={phone}
+                                        label="Phone"
+                                        fullWidth={true}
+                                        variant="outlined"
+                                        placeholder="Phone"
+                                        name="phone"
+                                        error={Boolean(error.phone)}
+                                        helperText={error.phone}
+                                        type="tel"
+                                        size="medium"
+                                        margin="dense"
+                                    />
+
+                                    <TextField
+                                        required={true}
+                                        onChange={handleContactChange}
+                                        value={subject}
+                                        label="Subject"
+                                        fullWidth={true}
+                                        variant="outlined"
+                                        placeholder="Subject"
+                                        name="subject"
+                                        error={Boolean(error.subject)}
+                                        helperText={error.subject}
+                                        type="text"
+                                        size="medium"
+                                        margin="dense"
+                                    />
+
+                                    <TextField
+                                        required={true}
+                                        onChange={handleContactChange}
+                                        value={message}
+                                        label="Message"
+                                        fullWidth={true}
+                                        variant="outlined"
+                                        placeholder="Message"
+                                        name="message"
+                                        multiline={true}
+                                        minRows={5}
+                                        error={Boolean(error.message)}
+                                        helperText={error.message}
+                                        type="text"
+                                        size="medium"
+                                        margin="dense"
+                                    />
+
+                                    <Grid mt={8} container={true}>
+                                        <Grid item={true} xs={12} sm={6}>
+                                            <Button
+                                                sx={{
+                                                    borderWidth: 2,
+                                                    paddingTop: 2,
+                                                    paddingBottom: 2,
+                                                    transition: 'all 300ms ease-out',
+                                                    '&:hover': {
+                                                        backgroundColor: "secondary.main",
+                                                        color: "primary.main"
+                                                    }
+                                                }}
+                                                color="secondary"
+                                                variant="outlined"
+                                                fullWidth={true}>
+                                                Send Not
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Stack>
+                            </form>
+                        </CardContent>
+                    </Card>
                 </Container>
             </Box>
 
             <Box pb={8} pt={8}>
                 <Container>
                     <Grid mb={2} container={true} justifyContent="center">
-                        <Grid item={true}>
+                        <Grid item={true} xs={12}>
                             <Typography mb={2} fontWeight='bold' variant="body2" align="center">
                                 LET'S CONNECT WITH US
                             </Typography>
                             <Typography mb={2} variant="h5" align="center">
                                 Do You Have Any Questions?
                             </Typography>
-                            <Typography mb={2} variant="h5" align="center">
+                            <Typography mb={2} variant="body2" align="center">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
                                 ullamcorper mattis, pulvinar dapibus leo.
                             </Typography>
-                            <Button variant="outlined" size="large">Contact Us</Button>
+
+                        </Grid>
+                        <Grid item={true} xs={12} md={3}>
+                            <Link to="/contact" onClick={() => dispatch(UI_ACTION_CREATORS.changeActivePath('/contact'))}>
+
+                            </Link>
+                            <Button fullWidth={true} variant="outlined" size="large">Contact Us</Button>
                         </Grid>
                     </Grid>
                 </Container>
@@ -454,6 +566,7 @@ const HomePage = () => {
                     </Grid>
                 </Container>
             </Box>
+
         </Layout>
     )
 }

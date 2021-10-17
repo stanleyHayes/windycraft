@@ -9,15 +9,13 @@ const Banner = ({backgroundImage, title, alt, links}) => {
             root: {
                 position: 'relative',
                 width: '100%',
+                height: '20vh',
                 backgroundColor: 'rgba(255, 255, 255, .35)',
                 [theme.breakpoints.down('sm')]: {
-                    height: '40vh'
+                    height: '30vh'
                 },
-                [theme.breakpoints.down('md')]: {
-                    height: '45vh'
-                },
-                [theme.breakpoints.down('lg')]: {
-                    height: '50vh'
+                [theme.breakpoints.up('md')]: {
+                    height: '35vh'
                 }
             },
             backgroundImage: {
@@ -93,8 +91,6 @@ const Banner = ({backgroundImage, title, alt, links}) => {
                                         fontSize={12}
                                         fontWeight="bold"
                                         borderRadius={1}
-                                        ml={2}
-                                        mr={2}
                                         color="secondary.main"
                                         variant="body1"
                                         className={classes.linkText}>

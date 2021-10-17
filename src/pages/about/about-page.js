@@ -183,6 +183,26 @@ const AboutPage = () => {
                     </Grid>
                 </Grid>
             </Box>
+
+            <Box pt={8} pb={8}>
+                <Container>
+                    <Typography mb={2} variant="h4" align="center">FAQ</Typography>
+                    <Typography mb={2} variant="body2" align="center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                    </Typography>
+                </Container>
+            </Box>
+
+            <Box pt={8} pb={8}>
+                <Container>
+                    <Typography mb={2} variant="h4" align="center">Pricing</Typography>
+                    <Typography mb={2} variant="body2" align="center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                    </Typography>
+                </Container>
+            </Box>
         </Layout>
     )
 }

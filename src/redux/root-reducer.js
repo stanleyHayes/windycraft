@@ -6,6 +6,7 @@ import teamReducer from "./team/team-reducer";
 import valueReducer from "./values/value-reducer";
 import processReducer from "./process/process-reducer";
 import clientReducer from "./clients/client-reducer";
+import portfolioReducer from "./portfolio/portfolio-reducer";
 
 const rootReducer = combineReducers({
     ui: uiReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     teams: teamReducer,
     values: valueReducer,
     processes: processReducer,
-    clients: clientReducer
+    clients: clientReducer,
+    portfolio: portfolioReducer
 });
 
 export default rootReducer;
