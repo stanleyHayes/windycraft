@@ -8,7 +8,6 @@ import {useSelector} from "react-redux";
 import {selectTestimonials} from "../../redux/testimonials/testimonial-reducer";
 import Testimonial from "../../components/shared/testimonial";
 import AddTestimonialDialog from "../../components/dialogs/add-testimonial-dialog";
-import {createTheme} from "@mui/material/styles";
 
 const TestimonialsPage = () => {
 
