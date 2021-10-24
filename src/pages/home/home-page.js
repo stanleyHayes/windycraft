@@ -257,10 +257,10 @@ const HomePage = () => {
                     </Typography>
 
                     <Grid container={true} spacing={2} justifyContent="center">
-                        <Grid item={true}  xs={12} sm={6} md={3}>
+                        <Grid item={true} xs={12} sm={6} md={3}>
                             <Stat value={2000} title="Clients"/>
                         </Grid>
-                        <Grid item={true}  xs={12} sm={6} md={3}>
+                        <Grid item={true} xs={12} sm={6} md={3}>
                             <Stat value={20} title="Years"/>
                         </Grid>
                         <Grid item={true} xs={12} sm={6} md={3}>
@@ -579,17 +579,17 @@ const HomePage = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
                         mattis, pulvinar dapibus leo.
                     </Typography>
-                    <Container>
-                        <Grid container={true} spacing={3}>
-                            {testimonials.slice(0, 6).map((testimonial, index) => {
-                                return (
-                                    <Grid key={index} item={true} xs={12} md={4}>
-                                        <Testimonial testimonial={testimonial}/>
-                                    </Grid>
-                                )
-                            })}
-                        </Grid>
-                    </Container>
+
+                    <Grid container={true} spacing={3}>
+                        {testimonials.slice(0, 6).map((testimonial, index) => {
+                            return (
+                                <Grid key={index} item={true} xs={12} md={4}>
+                                    <Testimonial testimonial={testimonial}/>
+                                </Grid>
+                            )
+                        })}
+                    </Grid>
+
                     <Grid container={true} justifyContent="flex-end">
                         <Grid item={true}>
                             <Link
