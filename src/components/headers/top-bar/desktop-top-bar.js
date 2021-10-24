@@ -45,7 +45,7 @@ const DesktopTopBar = () => {
                         />
                         <IconTextview
                             color={"primary.main"}
-                            icon={<Schedule sx={{color: "primary.main"}}/>}
+                            icon={<CalendarToday sx={{color: "primary.main"}}/>}
                             text="Saturday"
                         />
                         <IconTextview

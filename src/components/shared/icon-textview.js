@@ -6,7 +6,7 @@ const IconTextview = ({icon, text, color = grey['600']}) => {
     return (
         <Stack direction="row" spacing={1}>
             {icon}
-            <Typography sx={{color: color}} variant="body2">{text}</Typography>
+            <Typography sx={{color: color, fontWeight: 'bold'}} variant="body2">{text}</Typography>
         </Stack>
     )
 }

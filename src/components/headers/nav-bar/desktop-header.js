@@ -39,7 +39,7 @@ const DesktopHeader = () => {
                         <LinkItem label="About" path="/about"/>
                         <LinkItem label="Services" path="/services"/>
                         <LinkItem label="Contact" path="/contact"/>
-                        <LinkItem label="Portfolio" path="/portfolio"/>
+                        {/*<LinkItem label="Portfolio" path="/portfolio"/>*/}
                         <LinkItem label="Testimonial" path="/testimonials"/>
                     </Stack>
                 </Grid>

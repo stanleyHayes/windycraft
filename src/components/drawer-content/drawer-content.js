@@ -88,20 +88,20 @@ const DrawerContent = () => {
                     label="Services"
                     path="/services"
                 />
-                <SideBarLinkItem
-                    icon={<Star
-                        sx={{
-                            color: "secondary.main",
-                            borderRadius: 1,
-                            padding: 0.4,
-                            width: 24,
-                            height: 24,
-                            backgroundColor: '#F9A34F40'
-                        }}
-                    />}
-                    label="Portfolio"
-                    path="/portfolio"
-                />
+                {/*<SideBarLinkItem*/}
+                {/*    icon={<Star*/}
+                {/*        sx={{*/}
+                {/*            color: "secondary.main",*/}
+                {/*            borderRadius: 1,*/}
+                {/*            padding: 0.4,*/}
+                {/*            width: 24,*/}
+                {/*            height: 24,*/}
+                {/*            backgroundColor: '#F9A34F40'*/}
+                {/*        }}*/}
+                {/*    />}*/}
+                {/*    label="Portfolio"*/}
+                {/*    path="/portfolio"*/}
+                {/*/>*/}
                 <SideBarLinkItem
                     icon={<Favorite
                         sx={{
