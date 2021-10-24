@@ -1,5 +1,5 @@
 import {Button, Container, Divider, Stack, Typography} from "@mui/material";
-import {BusinessCenter, Close, ContactPage, Favorite, Home, Info, Star} from "@mui/icons-material";
+import {BusinessCenter, Close, ContactPage, Favorite, Home, Info} from "@mui/icons-material";
 import {UI_ACTION_CREATORS} from "../../redux/ui/ui-action-creators";
 import {useDispatch} from "react-redux";
 import SideBarLinkItem from "../shared/side-bar-link-item";
