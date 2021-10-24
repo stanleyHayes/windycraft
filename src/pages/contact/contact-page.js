@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Layout from "../../components/layout/layout";
-import {makeStyles} from "@mui/styles";
 import Banner from "../../components/shared/banner";
 import {Box, Button, Card, CardContent, Container, Grid, Stack, TextField, Typography} from "@mui/material";
 import {
@@ -16,14 +15,6 @@ import ContactCard from "../../components/shared/contact-card";
 import IconTextview from "../../components/shared/icon-textview";
 
 const ContactPage = () => {
-
-    const useStyles = makeStyles(theme => {
-        return {
-            container: {},
-        }
-    });
-
-    const classes = useStyles();
 
     const [contact, setContact] = useState({});
     const [error, setError] = useState({});
@@ -47,7 +38,7 @@ const ContactPage = () => {
     return (
         <Layout>
             <Box pb={8} sx={{backgroundColor: 'background.dark'}}>
-                <div className={classes.container}>
+                <div>
                     <Banner
                         title="Contact"
                         links={[{label: 'Home', link: '/'}, {label: 'Contact', link: '/contact'}]}
@@ -188,21 +179,24 @@ const ContactPage = () => {
                                                     margin="dense"
                                                 />
 
-                                                <Grid mt={8} container={true}>
-                                                    <Grid item={true} xs={12} sm={6}>
+                                                <Grid mt={8} container={true} justifyContent="center">
+                                                    <Grid xs={12} item={true}>
                                                         <Button
+                                                            disableElevation={true}
                                                             sx={{
                                                                 borderWidth: 2,
-                                                                paddingTop: 2,
-                                                                paddingBottom: 2,
+                                                                paddingTop: 1.5,
+                                                                paddingBottom: 1.5,
+                                                                fontWeight: 'bold',
+                                                                backgroundColor: "primary.main",
+                                                                color: "secondary.main",
                                                                 transition: 'all 300ms ease-out',
                                                                 '&:hover': {
                                                                     backgroundColor: "secondary.main",
                                                                     color: "primary.main"
                                                                 }
                                                             }}
-                                                            color="secondary"
-                                                            variant="outlined"
+                                                            variant="contained"
                                                             fullWidth={true}>
                                                             Send Message
                                                         </Button>

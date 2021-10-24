@@ -1,4 +1,5 @@
 import {Card, CardContent, Grid, Typography} from "@mui/material";
+import {grey} from "@mui/material/colors";
 
 const CoreValue = ({value}) => {
 
@@ -12,10 +13,10 @@ const CoreValue = ({value}) => {
                 </Grid>
                 <Typography
                     mb={2}
-                    sx={{color: 'secondary.main'}}
+                    sx={{color: 'primary.main'}}
                     variant="h5"
                     align="center">{value.name}</Typography>
-                <Typography variant="body1" align="center">{value.description}</Typography>
+                <Typography paragraph={true} sx={{color: grey['600'], fontWeight: 500}} align="center">{value.description}</Typography>
             </CardContent>
         </Card>
     )

@@ -400,6 +400,7 @@ const HomePage = () => {
                 </Container>
             </Box>
 
+            {/*Get a free quote Section*/}
             <Box pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
                 <Container>
                     <Typography mb={2} fontWeight='bold' variant="h5" align="center">Get a free Quote</Typography>
@@ -409,7 +410,7 @@ const HomePage = () => {
                                 <CardContent>
                                     <form onSubmit={handleSubmit}>
                                         <Stack spacing={1.2}>
-                                            <Grid container={true} justifyContent="space-between">
+                                            <Grid container={true} rowGap={1} justifyContent="space-between">
                                                 <Grid item={true} xs={12} md={5.9}>
                                                     <TextField
                                                         required={true}
@@ -542,6 +543,7 @@ const HomePage = () => {
                 </Container>
             </Box>
 
+            {/*Connect with us Section*/}
             <Box pb={8} pt={8} sx={{backgroundColor: 'background.light'}}>
                 <Container>
                     <Grid mb={2} container={true} justifyContent="center">
@@ -569,6 +571,7 @@ const HomePage = () => {
                 </Container>
             </Box>
 
+            {/*Testimonial Section*/}
             <Box pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
                 <Container>
                     <Typography mb={2} fontWeight='bold' variant="body2" align="center">Testimonials</Typography>

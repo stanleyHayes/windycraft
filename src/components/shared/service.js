@@ -1,4 +1,5 @@
 import {Card, CardContent, CardMedia, Typography} from "@mui/material";
+import {grey} from "@mui/material/colors";
 
 const Service = ({service}) => {
     return (
@@ -15,7 +16,10 @@ const Service = ({service}) => {
                     px: 8
                 }}>
                 <Typography align="center" variant="h5" mb={2}>{service.title}</Typography>
-                <Typography align="center" variant="body1">
+                <Typography
+                    sx={{color: grey['600'], fontWeight: 500}}
+                    align="center"
+                    paragraph={true}>
                     {service.description}
                 </Typography>
             </CardContent>

@@ -10,8 +10,8 @@ const SocialLink = ({account}) => {
                     sx={{
                         fontSize: 36,
                         borderRadius: '50%',
-                        backgroundColor: 'primary.main',
-                        color: 'white',
+                        backgroundColor: 'secondary.main',
+                        color: 'primary.main',
                         padding: .8
                     }}
                 />
@@ -20,8 +20,8 @@ const SocialLink = ({account}) => {
                     sx={{
                         fontSize: 36,
                         borderRadius: '50%',
-                        backgroundColor: 'primary.main',
-                        color: 'white',
+                        backgroundColor: 'secondary.main',
+                        color: 'primary.main',
                         padding: .8
                     }}/>
             ) : account.platform === 'twitter' ? (
@@ -29,8 +29,8 @@ const SocialLink = ({account}) => {
                     sx={{
                         fontSize: 36,
                         borderRadius: '50%',
-                        backgroundColor: 'primary.main',
-                        color: 'white',
+                        backgroundColor: 'secondary.main',
+                        color: 'primary.main',
                         padding: .8
                     }}
                 />
@@ -38,8 +38,8 @@ const SocialLink = ({account}) => {
                 sx={{
                     fontSize: 36,
                     borderRadius: '50%',
-                    backgroundColor: 'primary.main',
-                    color: 'white',
+                    backgroundColor: 'secondary.main',
+                    color: 'primary.main',
                     padding: .8
                 }}
             />}

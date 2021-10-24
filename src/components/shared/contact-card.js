@@ -1,10 +1,11 @@
 import {Card, CardContent, Grid, Typography} from "@mui/material";
 import React from "react";
 import {makeStyles} from "@mui/styles";
+import {grey} from "@mui/material/colors";
 
 const ContactCard = ({label, value, icon}) => {
 
-    const useStyles = makeStyles(theme => {
+    const useStyles = makeStyles(() => {
         return {
             card: {}
         }
@@ -20,11 +21,11 @@ const ContactCard = ({label, value, icon}) => {
                         {icon}
                     </Grid>
                 </Grid>
-                <Typography align="center" variant="body2">{label}</Typography>
+                <Typography align="center" variant="h6">{label}</Typography>
                 <Typography
-                    fontWeight="bold"
+                    sx={{fontWeight: 600, color: grey['600']}}
                     align="center"
-                    variant="body1">
+                paragraph={true}>
                     {value}
                 </Typography>
             </CardContent>
