@@ -24,6 +24,9 @@ import Carousel from 'react-multi-carousel';
 import {UTILS} from "../../utils/utils";
 import {selectClients} from "../../redux/clients/client-reducer";
 import Client from "../../components/shared/client";
+import Testimonial from "../../components/shared/testimonial";
+import {selectTestimonials} from "../../redux/testimonials/testimonial-reducer";
+import Stat from "../../components/shared/stat";
 
 
 const HomePage = () => {
@@ -64,7 +67,8 @@ const HomePage = () => {
             },
             icon: {
                 width: 50,
-                height: 50
+                height: 50,
+                borderRadius: theme.shape.borderRadius
             },
             whyChooseUsImage: {
                 width: '100%',
@@ -81,12 +85,10 @@ const HomePage = () => {
             }
         }
     });
-    // Testimonials
     // Statistics
     // Submit a review
     // Watch our video
-    // Slider of portfolio
-    // Slider summary of services
+    // Slider of products
 
     const classes = useStyles();
 
@@ -103,6 +105,8 @@ const HomePage = () => {
 
     const {services} = useSelector(selectServices);
     const {clients} = useSelector(selectClients);
+    const {testimonials} = useSelector(selectTestimonials);
+
 
     const dispatch = useDispatch();
 
@@ -144,7 +148,7 @@ const HomePage = () => {
                             <Grid item={true} xs={12} md={8} lg={6}>
                                 <Typography
                                     sx={{
-                                        color: 'secondary.main',
+                                        color: 'white',
                                         fontWeight: 'bolder'
                                     }}
                                     align="center"
@@ -152,20 +156,21 @@ const HomePage = () => {
                                     variant="h2">Windy Craft</Typography>
                                 <Typography
                                     sx={{
-                                        color: 'secondary.main'
+                                        color: 'white'
                                     }}
                                     align="center"
                                     mb={2}
-                                    variant="h6">
+                                    variant="h5">
                                     Slider summary of services
                                 </Typography>
                                 <Typography
                                     align="center"
                                     sx={{
-                                        color: 'secondary.main'
+                                        color: 'white',
+                                        fontWeight: 500
                                     }}
                                     mb={8}
-                                    variant="body2">
+                                    paragraph={true}>
                                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
                                     nonumy eirmod tempor invidunt ut labore dolore magna aliquyam erat, sed diam
                                     voluptua.
@@ -189,6 +194,7 @@ const HomePage = () => {
                                 </Grid>
                                 <Grid item={true} xs={12} sm={6} md={3}>
                                     <Button
+                                        sx={{borderWidth: 2}}
                                         color="secondary"
                                         variant="outlined"
                                         size="large"
@@ -203,7 +209,7 @@ const HomePage = () => {
                 <img className={classes.bannerImage} alt="" src="/assets/about-background-image.jpg"/>
             </Box>
 
-            <Box pt={8} pb={8}>
+            <Box pt={4} pb={4}>
                 <Container>
                     <Typography mb={2} fontWeight='bold' variant="body2" align="center">
                         Our Clients
@@ -226,7 +232,7 @@ const HomePage = () => {
                 </Container>
             </Box>
 
-            <Box pt={8} pb={8}>
+            <Box pt={8} pb={8} sx={{backgroundColor: 'background.dark'}}>
                 <Container>
                     <Typography mb={2} variant="h4" align="center">Mission & Vision</Typography>
                     <Grid container={true} spacing={2}>
@@ -241,7 +247,83 @@ const HomePage = () => {
                 </Container>
             </Box>
 
-            <Box pt={8} pb={8}>
+            <Box pt={4} pb={4} sx={{backgroundColor: 'background.light'}}>
+                <Container>
+                    <Typography mb={2} fontWeight='bold' variant="body2" align="center">
+                        Statistics
+                    </Typography>
+                    <Typography mb={2} variant="h5" align="center">
+                        Birds eye view
+                    </Typography>
+
+                    <Grid container={true} spacing={2} justifyContent="center">
+                        <Grid item={true}  xs={12} sm={6} md={3}>
+                            <Stat value={2000} title="Clients"/>
+                        </Grid>
+                        <Grid item={true}  xs={12} sm={6} md={3}>
+                            <Stat value={20} title="Years"/>
+                        </Grid>
+                        <Grid item={true} xs={12} sm={6} md={3}>
+                            <Stat value={20} title="Products"/>
+                        </Grid>
+                        <Grid item={true} xs={12} sm={6} md={3}>
+                            <Stat value={30} title="Staff"/>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Box>
+
+            <Box pt={8} pb={8} sx={{backgroundColor: 'background.dark'}}>
+                <Container>
+                    <Typography mb={2} fontWeight='bold' variant="body2" align="center">SERVICES</Typography>
+                    <Typography mb={2} variant="h5" align="center">
+                        What Can We Do?
+                    </Typography>
+                    <Grid mb={2} container={true} justifyContent="center">
+                        <Grid item={true}>
+                            <Divider
+                                variant="middle"
+                                sx={{
+                                    justifyContent: "center",
+                                    backgroundColor: "secondary.main",
+                                    height: 5,
+                                    width: 100
+                                }}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Typography mb={2} variant="body2" align="center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
+                        mattis, pulvinar dapibus leo.
+                    </Typography>
+                    <Grid container={true} spacing={3}>
+                        {services.slice(0, 3).map((service, index) => {
+                            return (
+                                <Grid key={index} item={true} xs={12} md={4}>
+                                    <Service service={service}/>
+                                </Grid>
+                            )
+                        })}
+                    </Grid>
+                    <Grid container={true} justifyContent="flex-end">
+                        <Grid item={true}>
+                            <Link
+                                className={classes.link}
+                                to="/services"
+                                onClick={() => dispatch(UI_ACTION_CREATORS.changeActivePath('/services'))}>
+                                <Button
+                                    variant="text"
+                                    size="large"
+                                    endIcon={<ChevronRight/>}>
+                                    View all Services
+                                </Button>
+                            </Link>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Box>
+
+            <Box pt={8} pb={8} sx={{backgroundColor: 'background.light'}}>
                 <Container>
                     <Grid container={true} spacing={4}>
                         <Grid item={true} xs={12} md={6}>
@@ -318,193 +400,149 @@ const HomePage = () => {
                 </Container>
             </Box>
 
-            <Box pt={8} pb={8}>
-                <Container>
-                    <Typography mb={2} fontWeight='bold' variant="body2" align="center">SERVICES</Typography>
-                    <Typography mb={2} variant="h5" align="center">
-                        What Can We Do?
-                    </Typography>
-                    <Grid mb={2} container={true} justifyContent="center">
-                        <Grid item={true}>
-                            <Divider
-                                variant="middle"
-                                sx={{
-                                    justifyContent: "center",
-                                    backgroundColor: "secondary.main",
-                                    height: 5,
-                                    width: 100
-                                }}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Typography mb={2} variant="body2" align="center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
-                        mattis, pulvinar dapibus leo.
-                    </Typography>
-                    <Grid container={true} spacing={3}>
-                        {services.slice(0, 3).map((service, index) => {
-                            return (
-                                <Grid key={index} item={true} xs={12} md={4}>
-                                    <Service service={service}/>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
-                    <Grid container={true} justifyContent="flex-end">
-                        <Grid item={true}>
-                            <Link
-                                className={classes.link}
-                                to="/services"
-                                onClick={() => dispatch(UI_ACTION_CREATORS.changeActivePath('/services'))}>
-                                <Button
-                                    variant="text"
-                                    size="large"
-                                    endIcon={<ChevronRight/>}>
-                                    View all Services
-                                </Button>
-                            </Link>
-                        </Grid>
-                    </Grid>
-                </Container>
-            </Box>
-
-            <Box pb={8} pt={8}>
+            <Box pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
                 <Container>
                     <Typography mb={2} fontWeight='bold' variant="h5" align="center">Get a free Quote</Typography>
-                    <Card elevation={0}>
-                        <CardContent>
-                            <form onSubmit={handleSubmit}>
-                                <Stack spacing={1}>
-                                    <Grid container={true} justifyContent="space-between">
-                                        <Grid item={true} xs={12} md={5.9}>
+                    <Grid container={true} justifyContent="center">
+                        <Grid item={true} xs={12} md={6}>
+                            <Card elevation={0}>
+                                <CardContent>
+                                    <form onSubmit={handleSubmit}>
+                                        <Stack spacing={1.2}>
+                                            <Grid container={true} justifyContent="space-between">
+                                                <Grid item={true} xs={12} md={5.9}>
+                                                    <TextField
+                                                        required={true}
+                                                        onChange={handleContactChange}
+                                                        value={firstName}
+                                                        label="First Name"
+                                                        fullWidth={true}
+                                                        variant="outlined"
+                                                        placeholder="First Name"
+                                                        name="firstName"
+                                                        error={Boolean(error.firstName)}
+                                                        helperText={error.firstName}
+                                                        type="text"
+                                                        size="medium"
+                                                    />
+                                                </Grid>
+                                                <Grid item={true} xs={12} md={5.9}>
+                                                    <TextField
+                                                        required={true}
+                                                        onChange={handleContactChange}
+                                                        value={lastName}
+                                                        label="Last Name"
+                                                        fullWidth={true}
+                                                        variant="outlined"
+                                                        placeholder="Last Name"
+                                                        name="lastName"
+                                                        error={Boolean(error.lastName)}
+                                                        helperText={error.lastName}
+                                                        type="text"
+                                                        size="medium"
+                                                    />
+                                                </Grid>
+                                            </Grid>
                                             <TextField
                                                 required={true}
                                                 onChange={handleContactChange}
-                                                value={firstName}
-                                                label="First Name"
+                                                value={email}
+                                                label="Email"
                                                 fullWidth={true}
                                                 variant="outlined"
-                                                placeholder="First Name"
-                                                name="firstName"
-                                                error={Boolean(error.firstName)}
-                                                helperText={error.firstName}
-                                                type="text"
-                                                size="medium"
-                                                margin="dense"
-                                            />
-                                        </Grid>
-                                        <Grid item={true} xs={12} md={5.9}>
-                                            <TextField
-                                                required={true}
-                                                onChange={handleContactChange}
-                                                value={lastName}
-                                                label="Last Name"
-                                                fullWidth={true}
-                                                variant="outlined"
-                                                placeholder="Last Name"
+                                                placeholder="Email"
                                                 name="lastName"
-                                                error={Boolean(error.lastName)}
-                                                helperText={error.lastName}
+                                                error={Boolean(error.email)}
+                                                helperText={error.email}
+                                                type="email"
+                                                size="medium"
+                                                margin="normal"
+                                            />
+
+                                            <TextField
+                                                required={true}
+                                                onChange={handleContactChange}
+                                                value={phone}
+                                                label="Phone"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="Phone"
+                                                name="phone"
+                                                error={Boolean(error.phone)}
+                                                helperText={error.phone}
+                                                type="tel"
+                                                size="medium"
+                                                margin="normal"
+                                            />
+
+                                            <TextField
+                                                required={true}
+                                                onChange={handleContactChange}
+                                                value={subject}
+                                                label="Subject"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="Subject"
+                                                name="subject"
+                                                error={Boolean(error.subject)}
+                                                helperText={error.subject}
                                                 type="text"
                                                 size="medium"
-                                                margin="dense"
+                                                margin="normal"
                                             />
-                                        </Grid>
-                                    </Grid>
-                                    <TextField
-                                        required={true}
-                                        onChange={handleContactChange}
-                                        value={email}
-                                        label="Email"
-                                        fullWidth={true}
-                                        variant="outlined"
-                                        placeholder="Email"
-                                        name="lastName"
-                                        error={Boolean(error.email)}
-                                        helperText={error.email}
-                                        type="email"
-                                        size="medium"
-                                        margin="dense"
-                                    />
 
-                                    <TextField
-                                        required={true}
-                                        onChange={handleContactChange}
-                                        value={phone}
-                                        label="Phone"
-                                        fullWidth={true}
-                                        variant="outlined"
-                                        placeholder="Phone"
-                                        name="phone"
-                                        error={Boolean(error.phone)}
-                                        helperText={error.phone}
-                                        type="tel"
-                                        size="medium"
-                                        margin="dense"
-                                    />
-
-                                    <TextField
-                                        required={true}
-                                        onChange={handleContactChange}
-                                        value={subject}
-                                        label="Subject"
-                                        fullWidth={true}
-                                        variant="outlined"
-                                        placeholder="Subject"
-                                        name="subject"
-                                        error={Boolean(error.subject)}
-                                        helperText={error.subject}
-                                        type="text"
-                                        size="medium"
-                                        margin="dense"
-                                    />
-
-                                    <TextField
-                                        required={true}
-                                        onChange={handleContactChange}
-                                        value={message}
-                                        label="Message"
-                                        fullWidth={true}
-                                        variant="outlined"
-                                        placeholder="Message"
-                                        name="message"
-                                        multiline={true}
-                                        minRows={5}
-                                        error={Boolean(error.message)}
-                                        helperText={error.message}
-                                        type="text"
-                                        size="medium"
-                                        margin="dense"
-                                    />
-
-                                    <Grid mt={8} container={true}>
-                                        <Grid item={true} xs={12} sm={6}>
-                                            <Button
-                                                sx={{
-                                                    borderWidth: 2,
-                                                    paddingTop: 2,
-                                                    paddingBottom: 2,
-                                                    transition: 'all 300ms ease-out',
-                                                    '&:hover': {
-                                                        backgroundColor: "secondary.main",
-                                                        color: "primary.main"
-                                                    }
-                                                }}
-                                                color="secondary"
+                                            <TextField
+                                                required={true}
+                                                onChange={handleContactChange}
+                                                value={message}
+                                                label="Message"
+                                                fullWidth={true}
                                                 variant="outlined"
-                                                fullWidth={true}>
-                                                Send Not
-                                            </Button>
-                                        </Grid>
-                                    </Grid>
-                                </Stack>
-                            </form>
-                        </CardContent>
-                    </Card>
+                                                placeholder="Message"
+                                                name="message"
+                                                multiline={true}
+                                                minRows={5}
+                                                error={Boolean(error.message)}
+                                                helperText={error.message}
+                                                type="text"
+                                                size="medium"
+                                                margin="normal"
+                                            />
+
+                                            <Grid container={true} justifyContent="center">
+                                                <Grid item={true} xs={12} md={6}>
+                                                    <Button
+                                                        sx={{
+                                                            fontWeight: 'bold',
+                                                            borderWidth: 2,
+                                                            paddingTop: 1.5,
+                                                            paddingBottom: 1.5,
+                                                            color: "secondary.main",
+                                                            transition: 'all 300ms ease-out',
+                                                            '&:hover': {
+                                                                backgroundColor: "secondary.main",
+                                                                color: "primary.main"
+                                                            },
+                                                            mt: 2
+                                                        }}
+                                                        color="primary"
+                                                        variant="contained"
+                                                        disableElevation={true}
+                                                        fullWidth={true}>
+                                                        Send Note
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
+                                        </Stack>
+                                    </form>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    </Grid>
                 </Container>
             </Box>
 
-            <Box pb={8} pt={8}>
+            <Box pb={8} pt={8} sx={{backgroundColor: 'background.light'}}>
                 <Container>
                     <Grid mb={2} container={true} justifyContent="center">
                         <Grid item={true} xs={12}>
@@ -521,7 +559,8 @@ const HomePage = () => {
 
                         </Grid>
                         <Grid item={true} xs={12} md={3}>
-                            <Link to="/contact" onClick={() => dispatch(UI_ACTION_CREATORS.changeActivePath('/contact'))}>
+                            <Link to="/contact"
+                                  onClick={() => dispatch(UI_ACTION_CREATORS.changeActivePath('/contact'))}>
 
                             </Link>
                             <Button fullWidth={true} variant="outlined" size="large">Contact Us</Button>
@@ -530,7 +569,7 @@ const HomePage = () => {
                 </Container>
             </Box>
 
-            <Box pb={8} pt={8}>
+            <Box pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
                 <Container>
                     <Typography mb={2} fontWeight='bold' variant="body2" align="center">Testimonials</Typography>
                     <Typography mb={2} variant="h5" align="center">
@@ -540,15 +579,17 @@ const HomePage = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
                         mattis, pulvinar dapibus leo.
                     </Typography>
-                    <Grid container={true} spacing={3}>
-                        {services.slice(0, 3).map((service, index) => {
-                            return (
-                                <Grid key={index} item={true} xs={12} md={4}>
-                                    <Service service={service}/>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
+                    <Container>
+                        <Grid container={true} spacing={3}>
+                            {testimonials.slice(0, 6).map((testimonial, index) => {
+                                return (
+                                    <Grid key={index} item={true} xs={12} md={4}>
+                                        <Testimonial testimonial={testimonial}/>
+                                    </Grid>
+                                )
+                            })}
+                        </Grid>
+                    </Container>
                     <Grid container={true} justifyContent="flex-end">
                         <Grid item={true}>
                             <Link

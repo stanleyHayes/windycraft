@@ -21,25 +21,27 @@ const ServicesPage = () => {
 
     return (
         <Layout>
-            <div className={classes.container}>
-                <Banner
-                    title="Services"
-                    links={[{label: 'Home', link: '/'}, {label: 'Services', link: '/services'}]}
-                    backgroundImage="/assets/about-background-image.jpg"
-                />
-            </div>
-            <Box pt={8}>
-                <Container>
-                    <Grid container={true} spacing={3}>
-                        {services.map((service, index) => {
-                            return (
-                                <Grid key={index} item={true} xs={12} md={4}>
-                                    <Service service={service} />
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
-                </Container>
+            <Box pb={8} sx={{backgroundColor: 'background.dark'}}>
+                <div className={classes.container}>
+                    <Banner
+                        title="Services"
+                        links={[{label: 'Home', link: '/'}, {label: 'Services', link: '/services'}]}
+                        backgroundImage="/assets/about-background-image.jpg"
+                    />
+                </div>
+                <Box pt={8}>
+                    <Container>
+                        <Grid container={true} spacing={3}>
+                            {services.map((service, index) => {
+                                return (
+                                    <Grid key={index} item={true} xs={12} md={4}>
+                                        <Service service={service}/>
+                                    </Grid>
+                                )
+                            })}
+                        </Grid>
+                    </Container>
+                </Box>
             </Box>
         </Layout>
     )

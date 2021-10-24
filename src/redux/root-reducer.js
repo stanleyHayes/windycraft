@@ -7,6 +7,7 @@ import valueReducer from "./values/value-reducer";
 import processReducer from "./process/process-reducer";
 import clientReducer from "./clients/client-reducer";
 import portfolioReducer from "./portfolio/portfolio-reducer";
+import faqReducer from "./faqs/faq-reducer";
 
 const rootReducer = combineReducers({
     ui: uiReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     values: valueReducer,
     processes: processReducer,
     clients: clientReducer,
-    portfolio: portfolioReducer
+    portfolio: portfolioReducer,
+    faqs: faqReducer
 });
 
 export default rootReducer;

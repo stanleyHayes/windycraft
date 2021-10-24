@@ -23,14 +23,23 @@ const NotFoundPage = () => {
 
     return (
         <Layout>
-            <Box>
+            <Box
+                sx={{
+                    pt: 8,
+                    pb: 8,
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                    minHeight: '86vh'
+                }}>
                 <Container className={classes.container}>
-                    <Typography mb={8} variant="h1" align="center">404</Typography>
-                    <Typography mb={8} variant="h5" align="center">
+                    <Typography fontWeight={800} mb={4} variant="h1" align="center">404</Typography>
+                    <Typography fontWeight={700} mb={2} variant="h4" align="center">
                         Oops! Page Not Found
                     </Typography>
-                    <Typography mb={8} variant="body1" align="center">
-                        The page you are looking for does not exist. Go back to the home page or stay, it is quiet out here.
+                    <Typography mb={2} fontWeight={500} variant="body1" align="center">
+                        The page you are looking for does not exist. Go back to the home page or stay, it is quiet out
+                        here.
                     </Typography>
                     <Grid container={true} justifyContent="center">
                         <Grid item={true}>
@@ -38,7 +47,11 @@ const NotFoundPage = () => {
                                 to="/"
                                 className={classes.link}
                                 onClick={() => dispatch(UI_ACTION_CREATORS.changeActivePath('/'))}>
-                                <Button variant="contained" size="large">
+                                <Button
+                                    disableElevation={true}
+                                    sx={{pt: 1, pb: 1}}
+                                    variant="contained"
+                                    size="large">
                                     BACK TO HOME
                                 </Button>
                             </Link>

@@ -8,7 +8,7 @@ const Client = ({client}) => {
                 src={client.image}
                 component="img"
                 sx={{
-                    height: 100,
+                    height: 150,
                     objectFit: 'cover',
                     objectPosition: 'center'
                 }}

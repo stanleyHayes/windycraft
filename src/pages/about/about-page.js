@@ -11,6 +11,8 @@ import {selectValues} from "../../redux/values/value-reducer";
 import {Lightbulb} from "@mui/icons-material";
 import {selectProcesses} from "../../redux/process/process-reducer";
 import Process from "../../components/shared/process";
+import {selectFAQs} from "../../redux/faqs/faq-reducer";
+import FAQ from "../../components/shared/faq";
 
 const AboutPage = () => {
 
@@ -31,14 +33,15 @@ const AboutPage = () => {
     const {teams} = useSelector(selectTeams);
     const {values} = useSelector(selectValues);
     const {processes} = useSelector(selectProcesses);
+    const {faqs} = useSelector(selectFAQs);
 
     const mission = {
-        icon: <Lightbulb/>,
+        icon: <Lightbulb sx={{color: 'secondary.main'}}/>,
         name: 'Mission',
         description: 'Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work. Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.'
     };
     const vision = {
-        icon: <Lightbulb/>,
+        icon: <Lightbulb sx={{color: 'secondary.main'}}/>,
         name: 'Vision',
         description: 'Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work. Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.'
     };
@@ -71,17 +74,17 @@ const AboutPage = () => {
             <Container>
                 <Grid container={true} justifyContent="center" pt={8} pb={8}>
                     <Grid item={true} xs={12} md={8}>
-                        <Typography align="center" variant="h4">
+                        <Typography mb={2} align="center" variant="h4">
                             Welcome to Windy Craft
                         </Typography>
-                        <Typography align="center" variant="body1">
+                        <Typography mb={1} align="center" paragraph={true}>
                             We’re an architectural metal company that makes and installs building facades, decorative
                             exteriors,
                             custom railing, and really anything architectural you can imagine with metal. We’re an
                             architectural metal company that makes and installs building facades, decorative exteriors,
                             custom railing, and really anything architectural you can imagine with metal.
                         </Typography>
-                        <Typography align="center" variant="body1">
+                        <Typography mb={1} align="center" paragraph={true}>
                             We’re an architectural metal company that makes and installs building facades, decorative
                             exteriors,
                             custom railing, and really anything architectural you can imagine with metal. We’re an
@@ -191,6 +194,15 @@ const AboutPage = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
                     </Typography>
+                    <Grid container={true} spacing={3}>
+                        {faqs && faqs.map((faq, index) => {
+                            return (
+                                <Grid item={true} key={index} xs={12} md={4}>
+                                    <FAQ faq={faq}/>
+                                </Grid>
+                            )
+                        })}
+                    </Grid>
                 </Container>
             </Box>
 

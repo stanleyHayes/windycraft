@@ -1,9 +1,10 @@
 import React from "react";
-import {Grid, Stack, Toolbar, Typography} from "@mui/material";
+import {Grid, Link as MUILink, Stack, Toolbar, Typography} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import LinkItem from "../../shared/link-item";
 import {Link} from "react-router-dom";
 import {grey} from "@mui/material/colors";
+import {Facebook, Instagram, Twitter, YouTube} from "@mui/icons-material";
 
 const DesktopHeader = () => {
     const useStyles = makeStyles(theme => {
@@ -41,6 +42,45 @@ const DesktopHeader = () => {
                         <LinkItem label="Portfolio" path="/portfolio"/>
                         <LinkItem label="Testimonial" path="/testimonials"/>
                     </Stack>
+                </Grid>
+                <Grid item={true}>
+                    <MUILink><Twitter
+                        sx={{
+                            color: "primary.main",
+                            marginRight: 1,
+                            backgroundColor: 'secondary.main',
+                            borderRadius: 1,
+                            p: .5,
+                            fontSize: 32
+                        }}/></MUILink>
+                    <MUILink><Facebook
+                        sx={{
+                            color: "primary.main",
+                            marginRight: 1,
+                            backgroundColor: 'secondary.main',
+                            borderRadius: 1,
+                            p: .5,
+                            fontSize: 32
+                        }}/></MUILink>
+                    <MUILink><Instagram
+                        sx={{
+                            color: "primary.main",
+                            marginRight: 1,
+                            backgroundColor: 'secondary.main',
+                            borderRadius: 1,
+                            p: .5,
+                            fontSize: 32
+                        }}/></MUILink>
+                    <MUILink><YouTube
+                        sx={{
+                            color: "primary.main",
+                            marginRight: 1,
+                            backgroundColor: 'secondary.main',
+                            borderRadius: 1,
+                            p: .5,
+                            fontSize: 32
+                        }}
+                    /></MUILink>
                 </Grid>
             </Grid>
         </Toolbar>

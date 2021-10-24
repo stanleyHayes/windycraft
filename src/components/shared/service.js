@@ -10,7 +10,9 @@ const Service = ({service}) => {
                 alt={service.title}/>
             <CardContent
                 sx={{
-                    padding: 8
+                    paddingTop: 4,
+                    paddingBottom: 4,
+                    px: 8
                 }}>
                 <Typography align="center" variant="h5" mb={2}>{service.title}</Typography>
                 <Typography align="center" variant="body1">

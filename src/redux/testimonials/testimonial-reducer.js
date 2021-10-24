@@ -1,5 +1,7 @@
+import {testimonials} from "./testimonial-data";
+
 const INITIAL_STATE = {
-    testimonials: [],
+    testimonials: [...testimonials],
     testimonialError: null,
     testimonialLoading: false
 };
@@ -10,5 +12,8 @@ const testimonialReducer = (state = INITIAL_STATE, action) => {
             return state;
     }
 }
+
+
+export const selectTestimonials = state => state.testimonials;
 
 export default testimonialReducer;

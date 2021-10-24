@@ -23,7 +23,8 @@ const Process = ({process, index}) => {
             elevation={0}
             sx={{
                 height: 200,
-                backgroundColor: getColor(index)
+                backgroundColor: getColor(index),
+                borderRadius: 0
             }}>
             <CardContent>
                 <Typography

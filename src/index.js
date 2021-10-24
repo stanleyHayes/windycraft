@@ -9,7 +9,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 const theme = createTheme({
     typography: {
-        fontFamily: 'Raleway, Noto Sans Mono'
+        fontFamily: 'Quicksand, Raleway, Noto Sans Mono'
     },
     palette: {
         secondary: {
@@ -19,13 +19,13 @@ const theme = createTheme({
             main: '#212529'
         },
         background: {
-            default: '',
-            dark: '',
-            paper: ''
+            default: '#ffffff',
+            dark: '#e5e5e5',
+            paper: '#ffffff'
         }
     },
     shape: {
-        borderRadius: 0
+        borderRadius: 4
     }
 });
 

@@ -15,7 +15,6 @@ const Layout = ({children}) => {
             content: {
                 paddingTop: 92,
                 flex: 1,
-                paddingBottom: 32,
             },
             header: {
 

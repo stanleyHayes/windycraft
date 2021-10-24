@@ -15,7 +15,7 @@ const Portfolio = ({project}) => {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 zIndex: 10,
                 paddingTop: 8,
                 paddingBottom: 8
@@ -34,7 +34,7 @@ const Portfolio = ({project}) => {
                 display: 'flex',
                 alignItems: 'flex-end',
                 justifyContent: 'center',
-                height: '100%'
+                height: '100%',
             }
         }
     });
@@ -47,8 +47,10 @@ const Portfolio = ({project}) => {
                 <Box className={classes.container}>
                     <Typography
                         sx={{
-                            color: 'secondary.main',
-                            textTransform: 'uppercase'
+                            color: 'white',
+                            textTransform: 'uppercase',
+                            textAlign: 'center',
+                            width: '100%'
                         }}
                         align="center"
                         variant="h6">

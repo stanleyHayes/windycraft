@@ -41,7 +41,7 @@ const Banner = ({backgroundImage, title, alt, links}) => {
                 zIndex: 10,
                 position: 'absolute',
                 width: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.45)',
+                backgroundColor: 'rgba(0, 0, 0, 0.6)',
                 bottom: 0,
                 left: 0,
                 right: 0,
@@ -65,7 +65,7 @@ const Banner = ({backgroundImage, title, alt, links}) => {
                 <Box>
                     <Typography
                         mb={5}
-                        sx={{color: 'secondary.main'}}
+                        sx={{color: 'white'}}
                         variant="h4"
                         align="center">
                         {title}
@@ -75,7 +75,7 @@ const Banner = ({backgroundImage, title, alt, links}) => {
                             separator={
                                 <ChevronRight
                                     sx={{
-                                        color: "secondary.main"
+                                        color: "white"
                                     }}
                                     className={classes.icon}/>}>
                             {links.map(link => (
@@ -91,7 +91,7 @@ const Banner = ({backgroundImage, title, alt, links}) => {
                                         fontSize={12}
                                         fontWeight="bold"
                                         borderRadius={1}
-                                        color="secondary.main"
+                                        color="white"
                                         variant="body1"
                                         className={classes.linkText}>
                                         {link.label}

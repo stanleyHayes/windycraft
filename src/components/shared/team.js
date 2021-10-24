@@ -1,9 +1,10 @@
 import {Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import SocialLink from "./social-link";
+import {grey} from "@mui/material/colors";
 
 const Team = ({team}) => {
     return (
-        <Card elevation={0}>
+        <Card elevation={1} variant="outlined">
             <CardMedia
                 sx={{height: 200, objectFit: 'cover', objectPosition: 'center'}}
                 component="img"
@@ -11,10 +12,14 @@ const Team = ({team}) => {
                 alt={team.title}/>
             <CardContent
                 sx={{
-                    padding: 8
+                    padding: 4
                 }}>
                 <Typography align="center" variant="h5" mb={1}>{team.name}</Typography>
-                <Typography align="center" variant="body1" mb={1}>
+                <Typography
+                    sx={{color: grey['500']}}
+                    align="center"
+                    variant="body2"
+                    mb={2}>
                     {team.position}
                 </Typography>
                 <Grid container={true} justifyContent="center" spacing={1}>
