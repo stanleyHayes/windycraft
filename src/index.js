@@ -8,6 +8,8 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import 'react-multi-carousel/lib/styles.css';
 import GoogleSansRegular from "./fonts/GoogleSans-Regular.ttf";
 import {CssBaseline} from "@mui/material";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 const theme = createTheme({
     components: {
@@ -41,7 +43,7 @@ const theme = createTheme({
         }
     },
     shape: {
-        borderRadius: 4
+        borderRadius: 0
     }
 });
 
@@ -51,7 +53,9 @@ ReactDOM.render(
             <BrowserRouter>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                    <App/>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <App/>
+                    </LocalizationProvider>
                 </ThemeProvider>
             </BrowserRouter>
         </Provider>

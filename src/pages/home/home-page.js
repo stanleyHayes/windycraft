@@ -3,14 +3,21 @@ import Layout from "../../components/layout/layout";
 import {makeStyles} from "@mui/styles";
 import {
     Box,
-    Button, Card, CardContent,
+    Button,
+    Card,
+    CardContent,
+    Checkbox,
     Container,
     Divider,
+    FormControlLabel,
+    FormGroup,
     Grid,
     List,
     ListItem,
     ListItemAvatar,
-    ListItemText, Stack, TextField,
+    ListItemText,
+    Stack,
+    TextField,
     Typography
 } from "@mui/material";
 import {ChevronRight, Lightbulb} from "@mui/icons-material";
@@ -27,6 +34,7 @@ import Client from "../../components/shared/client";
 import Testimonial from "../../components/shared/testimonial";
 import {selectTestimonials} from "../../redux/testimonials/testimonial-reducer";
 import Stat from "../../components/shared/stat";
+import {DatePicker} from "@mui/lab";
 
 
 const HomePage = () => {
@@ -85,10 +93,6 @@ const HomePage = () => {
             }
         }
     });
-    // Statistics
-    // Submit a review
-    // Watch our video
-    // Slider of products
 
     const classes = useStyles();
 
@@ -107,15 +111,34 @@ const HomePage = () => {
     const {clients} = useSelector(selectClients);
     const {testimonials} = useSelector(selectTestimonials);
 
-
     const dispatch = useDispatch();
 
-    const [contact, setContact] = useState({});
+    const [quote, setQuote] = useState({startDate: new Date()});
     const [error, setError] = useState({});
-    const {firstName, lastName, email, phone, subject, message} = contact;
+    const [selectedServices, setSelectedServices] = useState([]);
+
+    const handleSelectService = service => {
+        const index = selectedServices.findIndex(s => s._id === service._id);
+        if (index === -1) setSelectedServices([...selectedServices, service]);
+        else setSelectedServices(selectedServices.filter(s => s._id !== service._id));
+    }
+
+    const {
+        firstName,
+        lastName,
+        email,
+        phone,
+        subject,
+        message,
+        website,
+        company,
+        information,
+        startDate,
+        budget
+    } = quote;
 
     const handleContactChange = event => {
-        setContact({...contact, [event.target.name]: event.target.value});
+        setQuote({...quote, [event.target.name]: event.target.value});
     }
 
     const handleSubmit = event => {
@@ -127,7 +150,7 @@ const HomePage = () => {
             setError({error, firstName: null});
         }
 
-        console.log(contact);
+        console.log(quote);
     }
 
     return (
@@ -182,15 +205,17 @@ const HomePage = () => {
                                 justifyContent="center"
                                 alignItems="center">
                                 <Grid item={true} xs={12} sm={6} md={3}>
-                                    <Button
-                                        sx={{
-                                            color: 'secondary.main'
-                                        }}
-                                        variant="contained"
-                                        size="large"
-                                        fullWidth={true}>
-                                        Get a quote
-                                    </Button>
+                                    <a href="#submit-quote" className={classes.link}>
+                                        <Button
+                                            sx={{
+                                                color: 'secondary.main'
+                                            }}
+                                            variant="contained"
+                                            size="large"
+                                            fullWidth={true}>
+                                            Get a quote
+                                        </Button>
+                                    </a>
                                 </Grid>
                                 <Grid item={true} xs={12} sm={6} md={3}>
                                     <Button
@@ -401,13 +426,14 @@ const HomePage = () => {
             </Box>
 
             {/*Get a free quote Section*/}
-            <Box pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
+            <Box id="submit-quote" pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
                 <Container>
                     <Typography mb={2} fontWeight='bold' variant="h5" align="center">Get a free Quote</Typography>
-                    <Grid container={true} justifyContent="center">
+                    <Grid container={true} spacing={2} justifyContent="space-between">
                         <Grid item={true} xs={12} md={6}>
                             <Card elevation={0}>
                                 <CardContent>
+                                    <Typography variant="h5" mb={2}>Personal Information</Typography>
                                     <form onSubmit={handleSubmit}>
                                         <Stack spacing={1.2}>
                                             <Grid container={true} rowGap={1} justifyContent="space-between">
@@ -493,10 +519,38 @@ const HomePage = () => {
                                             />
 
                                             <TextField
+                                                onChange={handleContactChange}
+                                                value={company}
+                                                label="Company"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="Enter company name"
+                                                name="company"
+                                                type="text"
+                                                size="medium"
+                                                margin="normal"
+                                            />
+
+                                            <TextField
+                                                onChange={handleContactChange}
+                                                value={website}
+                                                label="Website"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="Website"
+                                                name="website"
+                                                error={Boolean(error.website)}
+                                                helperText={error.website}
+                                                type="text"
+                                                size="medium"
+                                                margin="normal"
+                                            />
+
+                                            <TextField
                                                 required={true}
                                                 onChange={handleContactChange}
                                                 value={message}
-                                                label="Message"
+                                                label="What exactly do you want?"
                                                 fullWidth={true}
                                                 variant="outlined"
                                                 placeholder="Message"
@@ -510,30 +564,108 @@ const HomePage = () => {
                                                 margin="normal"
                                             />
 
-                                            <Grid container={true} justifyContent="center">
-                                                <Grid item={true} xs={12} md={6}>
-                                                    <Button
-                                                        sx={{
-                                                            fontWeight: 'bold',
-                                                            borderWidth: 2,
-                                                            paddingTop: 1.5,
-                                                            paddingBottom: 1.5,
-                                                            color: "secondary.main",
-                                                            transition: 'all 300ms ease-out',
-                                                            '&:hover': {
-                                                                backgroundColor: "secondary.main",
-                                                                color: "primary.main"
-                                                            },
-                                                            mt: 2
-                                                        }}
-                                                        color="primary"
-                                                        variant="contained"
-                                                        disableElevation={true}
-                                                        fullWidth={true}>
-                                                        Send Note
-                                                    </Button>
+                                        </Stack>
+                                    </form>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        <Grid item={true} xs={12} md={6}>
+                            <Card elevation={0}>
+                                <CardContent>
+                                    <Typography variant="h5" mb={2}>Project Information</Typography>
+                                    <form onSubmit={handleSubmit}>
+                                        <Stack spacing={1.2}>
+                                            <TextField
+                                                required={true}
+                                                onChange={handleContactChange}
+                                                value={budget}
+                                                label="Budget (GHS)"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="What's your budget in GHS"
+                                                name="budget"
+                                                error={Boolean(error.budget)}
+                                                helperText={error.budget}
+                                                type="number"
+                                                size="medium"
+                                            />
+
+                                            <Typography gutterBottom={true} variant="body2">
+                                                What services would you want?
+                                            </Typography>
+                                            <FormGroup>
+                                                <Grid container={true}>
+                                                    {services && services.map(service => {
+                                                        return (
+                                                            <Grid xs={12} md={6} item={true} key={service._id}>
+                                                                <FormControlLabel
+                                                                    control={
+                                                                        <Checkbox
+                                                                            checked={selectedServices.findIndex(s => s._id === service._id) !== -1}
+                                                                            onChange={() => handleSelectService(service)}
+                                                                        />} label={service.title}
+                                                                />
+                                                            </Grid>
+                                                        )
+                                                    })}
                                                 </Grid>
-                                            </Grid>
+                                            </FormGroup>
+
+                                            <DatePicker
+                                                rawValue={startDate}
+                                                label="Project Start Date"
+                                                value={startDate}
+                                                onChange={(date) => {
+                                                    setQuote({...quote, 'startDate': date})
+                                                }}
+                                                renderInput={
+                                                    (params) =>
+                                                        <TextField
+                                                            variant="outlined"
+                                                            fullWidth={true}
+                                                            placeholder="When do you want the project to be started?"
+                                                            mar
+                                                            label="Start Date" {...params} />}
+                                            />
+
+                                            <TextField
+                                                required={true}
+                                                onChange={handleContactChange}
+                                                value={information}
+                                                label="Additional Information"
+                                                fullWidth={true}
+                                                variant="outlined"
+                                                placeholder="What would you like to request?"
+                                                multiline={true}
+                                                minRows={3}
+                                                name="information"
+                                                error={Boolean(error.information)}
+                                                helperText={error.information}
+                                                type="text"
+                                                size="medium"
+                                                margin="normal"
+                                            />
+
+                                            <Button
+                                                sx={{
+                                                    fontWeight: 'bold',
+                                                    borderWidth: 2,
+                                                    paddingTop: 1.5,
+                                                    paddingBottom: 1.5,
+                                                    color: "secondary.main",
+                                                    transition: 'all 300ms ease-out',
+                                                    '&:hover': {
+                                                        backgroundColor: "secondary.main",
+                                                        color: "primary.main"
+                                                    },
+                                                    mt: 2
+                                                }}
+                                                color="primary"
+                                                variant="contained"
+                                                disableElevation={true}
+                                                fullWidth={true}>
+                                                Send Quote
+                                            </Button>
                                         </Stack>
                                     </form>
                                 </CardContent>
