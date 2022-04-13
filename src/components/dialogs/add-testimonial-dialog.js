@@ -1,9 +1,26 @@
-import {Box, Button, Dialog, DialogContent, Grid, Rating, Stack, TextField, Typography} from "@mui/material";
+import {
+    Alert,
+    AlertTitle,
+    Box,
+    Button,
+    Dialog,
+    DialogContent,
+    Grid, LinearProgress,
+    Rating,
+    Stack,
+    TextField,
+    Typography
+} from "@mui/material";
 import React, {useState} from "react";
+import {TESTIMONIAL_ACTION_CREATORS} from "../../redux/testimonials/testimonial-action-creators";
+import {useDispatch, useSelector} from "react-redux";
+import {selectTestimonials} from "../../redux/testimonials/testimonial-reducer";
 
 const AddTestimonialDialog = ({open, handleClose}) => {
 
-    const [testimonial, setTestimonial] = useState({rating: 0});
+    const [testimonial, setTestimonial] = useState({
+        rating: 5, firstName: '', lastName: '', review: ''
+    });
     const [error, setError] = useState({});
     const {firstName, lastName, review, rating} = testimonial;
 
@@ -14,6 +31,8 @@ const AddTestimonialDialog = ({open, handleClose}) => {
     const handleRatingChange = (event, rating) => {
         setTestimonial({...testimonial, rating});
     }
+
+    const dispatch = useDispatch();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -32,6 +51,13 @@ const AddTestimonialDialog = ({open, handleClose}) => {
             setError({error, lastName: null});
         }
 
+        if (rating < 0) {
+            setError({error, rating: 'Invalid rating'});
+            return;
+        } else {
+            setError({error, rating: null});
+        }
+
         if (!review) {
             setError({error, review: 'Review required'});
             return;
@@ -39,12 +65,32 @@ const AddTestimonialDialog = ({open, handleClose}) => {
             setError({error, review: null});
         }
 
-        handleClose();
+        dispatch(TESTIMONIAL_ACTION_CREATORS.createTestimonial(testimonial, handleClose));
     }
+
+    const {testimonialLoading, testimonialError} = useSelector(selectTestimonials);
+
     return (
         <Dialog open={open} onClose={handleClose}>
+            {testimonialLoading && <LinearProgress color="success" variant="query"/>}
             <DialogContent>
+                {
+                    testimonialError && (
+                        <Alert variant="standard" elevation={0} severity="error">
+                            <AlertTitle>{testimonialError}</AlertTitle>
+                        </Alert>
+                    )
+                }
                 <Typography align="center" mb={2} variant="h5">Submit Testimonial</Typography>
+                {
+                    error.rating && (
+                        <Alert severity="error">
+                            <AlertTitle>Rating Error</AlertTitle>
+                            <Typography variant="h6" align="center">{error.rating}</Typography>
+                        </Alert>
+                    )
+                }
+
                 <form onSubmit={handleSubmit}>
                     <Stack direction="column" spacing={0}>
                         <TextField

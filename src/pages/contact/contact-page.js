@@ -1,7 +1,19 @@
 import React, {useState} from "react";
 import Layout from "../../components/layout/layout";
 import Banner from "../../components/shared/banner";
-import {Box, Button, Card, CardContent, Container, Grid, Stack, TextField, Typography} from "@mui/material";
+import {
+    Alert, AlertTitle,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Container,
+    Grid,
+    LinearProgress,
+    Stack,
+    TextField,
+    Typography
+} from "@mui/material";
 import {
     CalendarToday,
     Close,
@@ -13,16 +25,24 @@ import {
 } from "@mui/icons-material";
 import ContactCard from "../../components/shared/contact-card";
 import IconTextview from "../../components/shared/icon-textview";
+import validator from "validator";
+import {MESSAGES_ACTION_CREATORS} from "../../redux/messages/messages-action-creators";
+import {useDispatch, useSelector} from "react-redux";
+import {selectMessages} from "../../redux/messages/messages-reducer";
 
 const ContactPage = () => {
 
-    const [contact, setContact] = useState({});
+    const [contact, setContact] = useState({
+        firstName: '', lastName: '', subject: '', message: '', email: '', phone: ''
+    });
     const [error, setError] = useState({});
     const {firstName, lastName, email, phone, subject, message} = contact;
 
     const handleContactChange = event => {
         setContact({...contact, [event.target.name]: event.target.value});
     }
+
+    const dispatch = useDispatch();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -33,8 +53,63 @@ const ContactPage = () => {
             setError({error, firstName: null});
         }
 
-        console.log(contact);
+        if (!lastName) {
+            setError({error, lastName: 'Last name required'});
+            return;
+        } else {
+            setError({error, lastName: null});
+        }
+
+        if (!email) {
+            setError({error, email: 'Email required'});
+            return;
+        } else {
+            setError({error, email: null});
+        }
+
+        if (!validator.isEmail(email)) {
+            setError({error, firstName: 'Invalid email'});
+            return;
+        } else {
+            setError({error, email: null});
+        }
+
+        if (!phone) {
+            setError({error, phone: 'Email required'});
+            return;
+        } else {
+            setError({error, phone: null});
+        }
+
+        if (!validator.isMobilePhone(phone)) {
+            setError({error, phone: 'Invalid phone'});
+            return;
+        } else {
+            setError({error, phone: null});
+        }
+
+        if (!subject) {
+            setError({error, subject: 'Subject required'});
+            return;
+        } else {
+            setError({error, subject: null});
+        }
+
+
+        if (!message) {
+            setError({error, message: 'Message required'});
+            return;
+        } else {
+            setError({error, message: null});
+        }
+        dispatch(MESSAGES_ACTION_CREATORS.createMessage(contact));
+        setContact({
+            firstName: '', lastName: '', subject: '', message: '', email: '', phone: ''
+        });
     }
+
+    const {messageLoading, messageError, message: response} = useSelector(selectMessages);
+
     return (
         <Layout>
             <Box pb={8} sx={{backgroundColor: 'background.dark'}}>
@@ -69,16 +144,31 @@ const ContactPage = () => {
                         <Grid container={true} spacing={4} justifyContent="space-around">
                             <Grid item={true} xs={12} md={8}>
                                 <Card elevation={0}>
+                                    {messageLoading && <LinearProgress color="secondary" variant="query"/>}
                                     <CardContent>
+                                        {
+                                            messageError && (
+                                                <Alert variant="standard" elevation={0} severity="error">
+                                                    <AlertTitle>{messageError}</AlertTitle>
+                                                </Alert>
+                                            )
+                                        }
+                                        {
+                                            response && (
+                                                <Alert variant="standard" elevation={0} severity="success">
+                                                    <AlertTitle>{response}</AlertTitle>
+                                                </Alert>
+                                            )
+                                        }
                                         <form onSubmit={handleSubmit}>
-                                            <Stack spacing={1}>
+                                            <Box>
                                                 <Typography align="center" variant="h5" mb={2}>Contact Form</Typography>
-                                                <Typography align="center" variant="body2" mb={4}>
+                                                <Typography align="center" variant="body2" mb={2}>
                                                     Send us a message
                                                 </Typography>
 
-                                                <Grid container={true} justifyContent="space-between">
-                                                    <Grid item={true} xs={12} md={5.9}>
+                                                <Grid container={true} spacing={0.5}>
+                                                    <Grid item={true} xs={12} md={6}>
                                                         <TextField
                                                             required={true}
                                                             onChange={handleContactChange}
@@ -95,7 +185,7 @@ const ContactPage = () => {
                                                             margin="dense"
                                                         />
                                                     </Grid>
-                                                    <Grid item={true} xs={12} md={5.9}>
+                                                    <Grid item={true} xs={12} md={6}>
                                                         <TextField
                                                             required={true}
                                                             onChange={handleContactChange}
@@ -113,6 +203,7 @@ const ContactPage = () => {
                                                         />
                                                     </Grid>
                                                 </Grid>
+
                                                 <TextField
                                                     required={true}
                                                     onChange={handleContactChange}
@@ -120,8 +211,8 @@ const ContactPage = () => {
                                                     label="Email"
                                                     fullWidth={true}
                                                     variant="outlined"
-                                                    placeholder="Email"
-                                                    name="lastName"
+                                                    placeholder="Enter Email"
+                                                    name="email"
                                                     error={Boolean(error.email)}
                                                     helperText={error.email}
                                                     type="email"
@@ -179,9 +270,12 @@ const ContactPage = () => {
                                                     margin="dense"
                                                 />
 
-                                                <Grid mt={8} container={true} justifyContent="center">
+                                                <Grid mt={2} container={true} justifyContent="center">
                                                     <Grid xs={12} item={true}>
                                                         <Button
+                                                            disabled={messageLoading}
+                                                            onClick={handleSubmit}
+                                                            onSubmit={handleSubmit}
                                                             disableElevation={true}
                                                             sx={{
                                                                 borderWidth: 2,
@@ -202,7 +296,7 @@ const ContactPage = () => {
                                                         </Button>
                                                     </Grid>
                                                 </Grid>
-                                            </Stack>
+                                            </Box>
                                         </form>
                                     </CardContent>
                                 </Card>
