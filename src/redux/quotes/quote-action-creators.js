@@ -33,8 +33,10 @@ const createQuote = (quote) => {
             });
             const {message} = response.data;
             dispatch(createQuoteSuccess(message));
+            console.log(message);
         } catch (e) {
-            const {message} = e.response.data.error;
+            const {message} = e.response.data;
+            console.log(message);
             dispatch(createQuoteFailure(message));
         }
     }

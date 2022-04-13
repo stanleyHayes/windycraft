@@ -9,6 +9,7 @@ import clientReducer from "./clients/client-reducer";
 import portfolioReducer from "./portfolio/portfolio-reducer";
 import faqReducer from "./faqs/faq-reducer";
 import messagesReducer from "./messages/messages-reducer";
+import quoteReducer from "./quotes/quote-reducer";
 
 const rootReducer = combineReducers({
     ui: uiReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     clients: clientReducer,
     portfolio: portfolioReducer,
     faqs: faqReducer,
-    messages: messagesReducer
+    messages: messagesReducer,
+    quotes: quoteReducer
 });
 
 export default rootReducer;

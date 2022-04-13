@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Layout from "../../components/layout/layout";
 import {makeStyles} from "@mui/styles";
 import {
+    Alert, AlertTitle,
     Box,
     Button,
     Card,
@@ -11,7 +12,7 @@ import {
     Divider,
     FormControlLabel,
     FormGroup,
-    Grid,
+    Grid, LinearProgress,
     List,
     ListItem,
     ListItemAvatar,
@@ -35,7 +36,10 @@ import Testimonial from "../../components/shared/testimonial";
 import {selectTestimonials} from "../../redux/testimonials/testimonial-reducer";
 import Stat from "../../components/shared/stat";
 import {DatePicker} from "@mui/lab";
-
+import validator from "validator";
+import {selectQuotes} from "../../redux/quotes/quote-reducer";
+import {MESSAGES_ACTION_CREATORS} from "../../redux/messages/messages-action-creators";
+import {QUOTES_ACTION_CREATORS} from "../../redux/quotes/quote-action-creators";
 
 const HomePage = () => {
 
@@ -113,7 +117,19 @@ const HomePage = () => {
 
     const dispatch = useDispatch();
 
-    const [quote, setQuote] = useState({startDate: new Date()});
+    const [quote, setQuote] = useState({
+        startDate: new Date(),
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+        website: '',
+        company: '',
+        information: '',
+        budget: '',
+    });
     const [error, setError] = useState({});
     const [selectedServices, setSelectedServices] = useState([]);
 
@@ -123,6 +139,7 @@ const HomePage = () => {
         else setSelectedServices(selectedServices.filter(s => s._id !== service._id));
     }
 
+    const {quoteLoading, quoteError, message: response} = useSelector(selectQuotes);
     const {
         firstName,
         lastName,
@@ -134,7 +151,7 @@ const HomePage = () => {
         company,
         information,
         startDate,
-        budget
+        budget,
     } = quote;
 
     const handleContactChange = event => {
@@ -150,7 +167,92 @@ const HomePage = () => {
             setError({error, firstName: null});
         }
 
-        console.log(quote);
+        if (!lastName) {
+            setError({error, lastName: 'Last name required'});
+            return;
+        } else {
+            setError({error, lastName: null});
+        }
+
+        if (!email) {
+            setError({error, email: 'Email required'});
+            return;
+        } else {
+            setError({error, email: null});
+        }
+
+        if (!validator.isEmail(email)) {
+            setError({error, email: 'Invalid email'});
+            return;
+        } else {
+            setError({error, email: null});
+        }
+
+        if (!phone) {
+            setError({error, phone: 'Phone required'});
+            return;
+        } else {
+            setError({error, phone: null});
+        }
+
+        if (!validator.isMobilePhone(phone)) {
+            setError({error, phone: 'Phone required'});
+            return;
+        } else {
+            setError({error, phone: null});
+        }
+
+        if (!subject) {
+            setError({error, subject: 'Subject required'});
+            return;
+        } else {
+            setError({error, subject: null});
+        }
+
+        if (!information) {
+            setError({error, information: 'Information required'});
+            return;
+        } else {
+            setError({error, information: null});
+        }
+
+        if (!message) {
+            setError({error, message: 'Message required'});
+            return;
+        } else {
+            setError({error, message: null});
+        }
+
+        if (!budget) {
+            setError({error, budget: 'Budget required'});
+            return;
+        } else {
+            setError({error, budget: null});
+        }
+
+        if (Number(budget) < 0) {
+            setError({error, budget: 'Invalid budget'});
+            return;
+        } else {
+            setError({error, budget: null});
+        }
+
+        dispatch(QUOTES_ACTION_CREATORS.createQuote(
+            {...quote, services: selectedServices}
+        ));
+        setQuote({
+            startDate: new Date(),
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: '',
+            website: '',
+            company: '',
+            information: '',
+            budget: '',
+        });
     }
 
     return (
@@ -432,12 +534,30 @@ const HomePage = () => {
                     <Grid container={true} spacing={2} justifyContent="space-between">
                         <Grid item={true} xs={12} md={6}>
                             <Card elevation={0}>
+                                {quoteLoading && (
+                                    <LinearProgress variant="query" color="secondary"/>
+                                )}
                                 <CardContent>
+                                    {
+                                        response && (
+                                            <Alert variant="standard" severity="success">
+                                                <AlertTitle>{response}</AlertTitle>
+                                            </Alert>
+                                        )
+                                    }
+
+                                    {
+                                        quoteError && (
+                                            <Alert variant="standard" severity="error">
+                                                <AlertTitle>{quoteError}</AlertTitle>
+                                            </Alert>
+                                        )
+                                    }
                                     <Typography variant="h5" mb={2}>Personal Information</Typography>
                                     <form onSubmit={handleSubmit}>
-                                        <Stack spacing={1.2}>
-                                            <Grid container={true} rowGap={1} justifyContent="space-between">
-                                                <Grid item={true} xs={12} md={5.9}>
+                                        <Box>
+                                            <Grid container={true} spacing={2} justifyContent="space-between">
+                                                <Grid item={true} xs={12} md={6}>
                                                     <TextField
                                                         required={true}
                                                         onChange={handleContactChange}
@@ -453,7 +573,7 @@ const HomePage = () => {
                                                         size="medium"
                                                     />
                                                 </Grid>
-                                                <Grid item={true} xs={12} md={5.9}>
+                                                <Grid item={true} xs={12} md={6}>
                                                     <TextField
                                                         required={true}
                                                         onChange={handleContactChange}
@@ -478,7 +598,7 @@ const HomePage = () => {
                                                 fullWidth={true}
                                                 variant="outlined"
                                                 placeholder="Email"
-                                                name="lastName"
+                                                name="email"
                                                 error={Boolean(error.email)}
                                                 helperText={error.email}
                                                 type="email"
@@ -541,7 +661,7 @@ const HomePage = () => {
                                                 name="website"
                                                 error={Boolean(error.website)}
                                                 helperText={error.website}
-                                                type="text"
+                                                type="url"
                                                 size="medium"
                                                 margin="normal"
                                             />
@@ -563,12 +683,12 @@ const HomePage = () => {
                                                 size="medium"
                                                 margin="normal"
                                             />
-
-                                        </Stack>
+                                        </Box>
                                     </form>
                                 </CardContent>
                             </Card>
                         </Grid>
+
                         <Grid item={true} xs={12} md={6}>
                             <Card elevation={0}>
                                 <CardContent>
@@ -624,7 +744,7 @@ const HomePage = () => {
                                                             variant="outlined"
                                                             fullWidth={true}
                                                             placeholder="When do you want the project to be started?"
-                                                            mar
+                                                            margin="normal"
                                                             label="Start Date" {...params} />}
                                             />
 
@@ -660,6 +780,9 @@ const HomePage = () => {
                                                     },
                                                     mt: 2
                                                 }}
+                                                onSubmit={handleSubmit}
+                                                onClick={handleSubmit}
+                                                disabled={quoteLoading}
                                                 color="primary"
                                                 variant="contained"
                                                 disableElevation={true}
