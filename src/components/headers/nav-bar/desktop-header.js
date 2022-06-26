@@ -29,7 +29,7 @@ const DesktopHeader = () => {
                             sx={{color: grey['300']}}
                             variant="h4"
                             className={classes.brand}>
-                            Windy Craft
+                            Super Craft
                         </Typography>
                     </Link>
                 </Grid>

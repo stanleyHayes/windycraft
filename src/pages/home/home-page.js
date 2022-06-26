@@ -38,7 +38,6 @@ import Stat from "../../components/shared/stat";
 import {DatePicker} from "@mui/lab";
 import validator from "validator";
 import {selectQuotes} from "../../redux/quotes/quote-reducer";
-import {MESSAGES_ACTION_CREATORS} from "../../redux/messages/messages-action-creators";
 import {QUOTES_ACTION_CREATORS} from "../../redux/quotes/quote-action-creators";
 
 const HomePage = () => {
@@ -103,12 +102,12 @@ const HomePage = () => {
     const mission = {
         icon: <Lightbulb/>,
         name: 'Mission',
-        description: 'Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work. Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.'
+        description: "Our mission is to provide exceptional services and deliver high-quality, cost-effective projects on schedule to meet or exceed the expectation of our customers. Fulfillment of customers' needs with a suitable level of quality is our main objective and essential element."
     };
     const vision = {
         icon: <Lightbulb/>,
         name: 'Vision',
-        description: 'Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work. Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.'
+        description: 'Our vision is to be recognized as a leading global company in metal fabrication and woodworking.'
     };
 
     const {services} = useSelector(selectServices);
@@ -278,27 +277,16 @@ const HomePage = () => {
                                     }}
                                     align="center"
                                     mb={2}
-                                    variant="h2">Windy Craft</Typography>
+                                    variant="h2">Super Craft</Typography>
                                 <Typography
+                                    mb={3}
                                     sx={{
                                         color: 'white'
                                     }}
                                     align="center"
                                     mb={2}
                                     variant="h5">
-                                    Slider summary of services
-                                </Typography>
-                                <Typography
-                                    align="center"
-                                    sx={{
-                                        color: 'white',
-                                        fontWeight: 500
-                                    }}
-                                    mb={8}
-                                    paragraph={true}>
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                                    nonumy eirmod tempor invidunt ut labore dolore magna aliquyam erat, sed diam
-                                    voluptua.
+                                    The home of blacksmith
                                 </Typography>
                             </Grid>
                             <Grid

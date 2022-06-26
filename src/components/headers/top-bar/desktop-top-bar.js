@@ -33,7 +33,7 @@ const DesktopTopBar = () => {
                         <IconTextview
                             color={"primary.main"}
                             icon={<Email sx={{color: "primary.main"}}/>}
-                            text="hayfordstanley@gmail.com"/>
+                            text="info@supercraftgh.com"/>
                         <IconTextview
                             color={"primary.main"}
                             icon={<CalendarToday sx={{color: "primary.main"}}/>}

@@ -4,7 +4,7 @@ import {grey} from "@mui/material/colors";
 const CoreValue = ({value}) => {
 
     return (
-        <Card elevation={0}>
+        <Card elevation={0} sx={{height: '100%'}}>
             <CardContent>
                 <Grid container={true} justifyContent="center">
                     <Grid item={true}>
