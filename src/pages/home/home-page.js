@@ -32,8 +32,6 @@ import Carousel from 'react-multi-carousel';
 import {UTILS} from "../../utils/utils";
 import {selectClients} from "../../redux/clients/client-reducer";
 import Client from "../../components/shared/client";
-import Testimonial from "../../components/shared/testimonial";
-import {selectTestimonials} from "../../redux/testimonials/testimonial-reducer";
 import Stat from "../../components/shared/stat";
 import {DatePicker} from "@mui/lab";
 import validator from "validator";
@@ -112,7 +110,7 @@ const HomePage = () => {
 
     const {services} = useSelector(selectServices);
     const {clients} = useSelector(selectClients);
-    const {testimonials} = useSelector(selectTestimonials);
+    // const {testimonials} = useSelector(selectTestimonials);
 
     const dispatch = useDispatch();
 
@@ -126,7 +124,6 @@ const HomePage = () => {
         message: '',
         website: '',
         company: '',
-        information: '',
         budget: '',
     });
     const [error, setError] = useState({});
@@ -148,7 +145,6 @@ const HomePage = () => {
         message,
         website,
         company,
-        information,
         startDate,
         budget,
     } = quote;
@@ -208,13 +204,6 @@ const HomePage = () => {
             setError({error, subject: null});
         }
 
-        if (!information) {
-            setError({error, information: 'Information required'});
-            return;
-        } else {
-            setError({error, information: null});
-        }
-
         if (!message) {
             setError({error, message: 'Message required'});
             return;
@@ -249,7 +238,6 @@ const HomePage = () => {
             message: '',
             website: '',
             company: '',
-            information: '',
             budget: '',
         });
     }
@@ -283,8 +271,7 @@ const HomePage = () => {
                                     sx={{
                                         color: 'white'
                                     }}
-                                    align="center"
-                                    mb={2}
+                                    align="center"                                 
                                     variant="h5">
                                     The home of blacksmith
                                 </Typography>
@@ -330,9 +317,10 @@ const HomePage = () => {
                         Our Clients
                     </Typography>
                     <Typography mb={2} variant="h5" align="center">
-                        What Can We Do?
+                        Our trusted partners
                     </Typography>
                     <Carousel
+                        infinite={true}
                         autoPlay={true}
                         autoPlaySpeed={3000}
                         responsive={UTILS.responsive}>
@@ -458,7 +446,7 @@ const HomePage = () => {
                                         <img className={classes.icon} src="/assets/about-background-image.jpg" alt=""/>
                                     </ListItemAvatar>
                                     <ListItemText
-                                        primary={<Typography variant="h6">Why Choose Us?</Typography>}
+                                        primary={<Typography variant="h6">Schedule-Driven</Typography>}
                                         secondary={
                                             <Typography variant="body2">
                                                 Fusce feugiat urna vel mi sodales, in vestibulum odio cond imentum.
@@ -472,7 +460,7 @@ const HomePage = () => {
                                         <img className={classes.icon} src="/assets/about-background-image.jpg" alt=""/>
                                     </ListItemAvatar>
                                     <ListItemText
-                                        primary={<Typography variant="h6">Why Choose Us?</Typography>}
+                                        primary={<Typography variant="h6">We manage complex projects exceptionally well</Typography>}
                                         secondary={
                                             <Typography variant="body2">
                                                 Fusce feugiat urna vel mi sodales, in vestibulum odio cond imentum.
@@ -486,7 +474,7 @@ const HomePage = () => {
                                         <img className={classes.icon} src="/assets/about-background-image.jpg" alt=""/>
                                     </ListItemAvatar>
                                     <ListItemText
-                                        primary={<Typography variant="h6">Why Choose Us?</Typography>}
+                                        primary={<Typography variant="h6">We make communication with all parties a top priority</Typography>}
                                         secondary={
                                             <Typography variant="body2">
                                                 Fusce feugiat urna vel mi sodales, in vestibulum odio cond imentum.
@@ -500,7 +488,21 @@ const HomePage = () => {
                                         <img className={classes.icon} src="/assets/about-background-image.jpg" alt=""/>
                                     </ListItemAvatar>
                                     <ListItemText
-                                        primary={<Typography variant="h6">Why Choose Us?</Typography>}
+                                        primary={<Typography variant="h6">We always have hands-on management for your project</Typography>}
+                                        secondary={
+                                            <Typography variant="body2">
+                                                Fusce feugiat urna vel mi sodales, in vestibulum odio cond imentum.
+                                            </Typography>
+                                        }
+
+                                    />
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemAvatar>
+                                        <img className={classes.icon} src="/assets/about-background-image.jpg" alt=""/>
+                                    </ListItemAvatar>
+                                    <ListItemText
+                                        primary={<Typography variant="h6">We are flexible and versatile</Typography>}
                                         secondary={
                                             <Typography variant="body2">
                                                 Fusce feugiat urna vel mi sodales, in vestibulum odio cond imentum.
@@ -664,7 +666,7 @@ const HomePage = () => {
                                                 placeholder="Message"
                                                 name="message"
                                                 multiline={true}
-                                                minRows={5}
+                                                minRows={3}
                                                 error={Boolean(error.message)}
                                                 helperText={error.message}
                                                 type="text"
@@ -736,23 +738,7 @@ const HomePage = () => {
                                                             label="Start Date" {...params} />}
                                             />
 
-                                            <TextField
-                                                required={true}
-                                                onChange={handleContactChange}
-                                                value={information}
-                                                label="Additional Information"
-                                                fullWidth={true}
-                                                variant="outlined"
-                                                placeholder="What would you like to request?"
-                                                multiline={true}
-                                                minRows={3}
-                                                name="information"
-                                                error={Boolean(error.information)}
-                                                helperText={error.information}
-                                                type="text"
-                                                size="medium"
-                                                margin="normal"
-                                            />
+                                        
 
                                             <Button
                                                 sx={{
@@ -815,7 +801,8 @@ const HomePage = () => {
             </Box>
 
             {/*Testimonial Section*/}
-            <Box pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
+
+            {/* {<Box pb={8} pt={8} sx={{backgroundColor: 'background.dark'}}>
                 <Container>
                     <Typography mb={2} fontWeight='bold' variant="body2" align="center">Testimonials</Typography>
                     <Typography mb={2} variant="h5" align="center">
@@ -852,7 +839,7 @@ const HomePage = () => {
                         </Grid>
                     </Grid>
                 </Container>
-            </Box>
+            </Box>} */}
 
         </Layout>
     )

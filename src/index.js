@@ -27,7 +27,7 @@ const theme = createTheme({
         }
     },
     typography: {
-        fontFamily: 'GoogleSans, Quicksand, Raleway, Noto Sans Mono'
+        fontFamily: 'EuclidCircularB, EuclidCircularA, GoogleSans'
     },
     palette: {
         secondary: {
@@ -43,7 +43,7 @@ const theme = createTheme({
         }
     },
     shape: {
-        borderRadius: 0
+        borderRadius: 8
     }
 });
 

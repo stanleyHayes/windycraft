@@ -9,10 +9,6 @@ import Team from "../../components/shared/team";
 import CoreValue from "../../components/shared/core-value";
 import {selectValues} from "../../redux/values/value-reducer";
 import {Lightbulb} from "@mui/icons-material";
-import {selectProcesses} from "../../redux/process/process-reducer";
-import Process from "../../components/shared/process";
-import {selectFAQs} from "../../redux/faqs/faq-reducer";
-import FAQ from "../../components/shared/faq";
 import {grey} from "@mui/material/colors";
 
 const AboutPage = () => {
@@ -35,18 +31,16 @@ const AboutPage = () => {
 
     const {teams} = useSelector(selectTeams);
     const {values} = useSelector(selectValues);
-    const {processes} = useSelector(selectProcesses);
-    const {faqs} = useSelector(selectFAQs);
 
     const mission = {
         icon: <Lightbulb sx={{color: 'secondary.main'}}/>,
         name: 'Mission',
-        description: 'Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work. Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.'
+        description: 'Our mission is to provide exceptional services and deliver high-quality, cost-effective projects on schedule to meet or exceed the expectation of our customers. Fulfillment of customers\' needs with a suitable level of quality is our main objective and essential element.'
     };
     const vision = {
         icon: <Lightbulb sx={{color: 'secondary.main'}}/>,
         name: 'Vision',
-        description: 'Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work. Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.'
+        description: 'Our vision is to be recognized as a leading global company in metal fabrication and woodworking.        '
     };
 
     return (
@@ -79,27 +73,14 @@ const AboutPage = () => {
                     <Grid container={true} justifyContent="center" pt={8} pb={8}>
                         <Grid item={true} xs={12} md={8}>
                             <Typography mb={2} align="center" variant="h4">
-                                Welcome to Windy Craft
+                                Welcome to Supercraft Craft
                             </Typography>
-                            <Typography sx={{color: grey['600'], fontWeight: 500}} mb={1} align="center"
-                                        paragraph={true}>
-                                We’re an architectural metal company that makes and installs building facades,
-                                decorative
-                                exteriors,
-                                custom railing, and really anything architectural you can imagine with metal. We’re an
-                                architectural metal company that makes and installs building facades, decorative
-                                exteriors,
-                                custom railing, and really anything architectural you can imagine with metal.
+                            <Typography variant="body2" sx={{color: grey['600'], fontWeight: 500}} mb={1} align="center">
+                                Super Craft Wrought Iron and Wood Works Ltd is a metal fabrication and woodcraft company. We are also producers of structural and miscellaneous steel components in Ghana. Complex projects are our specialty; as a result, no project is burdensome for us.
                             </Typography>
-                            <Typography sx={{color: grey['600'], fontWeight: 500}} mb={1} align="center"
-                                        paragraph={true}>
-                                We’re an architectural metal company that makes and installs building facades,
-                                decorative
-                                exteriors,
-                                custom railing, and really anything architectural you can imagine with metal. We’re an
-                                architectural metal company that makes and installs building facades, decorative
-                                exteriors,
-                                custom railing, and really anything architectural you can imagine with metal.
+                            <Typography variant="body2" sx={{color: grey['600'], fontWeight: 500}} mb={1} align="center">
+                                Working with Super Craft means working with a skilled team that has profound knowledge in our line of work. From pricing and estimates to drawings and designs, welding engineers, and the general workforce.
+We are proud of our accomplishments and have great confidence in our work
                             </Typography>
                         </Grid>
                     </Grid>
@@ -137,7 +118,7 @@ const AboutPage = () => {
                                     sx={{
                                         fontSize: {xs: 24, md: 48},
                                         fontWeight: 500
-                                    }} mb={1} variant='h4'>Stanley Hayford</Typography>
+                                    }} mb={1} variant='h4'>Mr Augustus Aikon</Typography>
                                 <Typography
                                     sx={{
                                         fontWeight: 'bold',
@@ -146,17 +127,8 @@ const AboutPage = () => {
                                     }}
                                     variant="body2" mb={4}>Founder</Typography>
                                 <Typography sx={{color: grey['600'], fontWeight: 500}} paragraph={true} mb={4}>
-                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                                    nonumy eirmod tempor invidunt ut labore dolore magna aliquyam erat, sed diam
-                                    voluptua.
-                                    At
-                                    vero eos et accusam justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                                    takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                                    consetetur
-                                    sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.
+                                Mr Augustus Aikon is a talented welding engineer with more than 20 years experience in the welding and fabrication. Mr. Aikon is skilled in reading and applying technical drawings .He has also operated various machinery to fabricate items and has consistently delivered high-quality products. He has successfully trained multiple apprentices and currently heads about 25 employees and apprentices.
                                 </Typography>
-
-                                <Typography variant="h3">Signature</Typography>
                             </Box>
                         </Container>
                     </Grid>
@@ -174,46 +146,6 @@ const AboutPage = () => {
                             return (
                                 <Grid key={index} item={true} xs={12} md={4}>
                                     <CoreValue value={value}/>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
-                </Container>
-            </Box>
-
-            <Box pt={8} pb={8} sx={{backgroundColor: 'background.light'}}>
-                <Container>
-                    <Typography mb={2} variant="h4" align="center">Our Process</Typography>
-                    <Typography sx={{color: grey['600'], fontWeight: 500}} mb={2} paragraph={true} align="center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                    </Typography>
-                </Container>
-                <Grid container={true}>
-                    <Grid container={true}>
-                        {processes.map((process, index) => {
-                            return (
-                                <Grid key={index} item={true} xs={12} md={3}>
-                                    <Process index={index} process={process}/>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
-                </Grid>
-            </Box>
-
-            <Box pt={8} pb={8} sx={{backgroundColor: 'background.dark'}}>
-                <Container>
-                    <Typography mb={2} variant="h4" align="center">FAQ</Typography>
-                    <Typography sx={{color: grey['600'], fontWeight: 500}} mb={2} variant="body2" align="center">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                    </Typography>
-                    <Grid container={true} spacing={3}>
-                        {faqs && faqs.map((faq, index) => {
-                            return (
-                                <Grid item={true} key={index} xs={12} md={4}>
-                                    <FAQ faq={faq} index={index + 1}/>
                                 </Grid>
                             )
                         })}

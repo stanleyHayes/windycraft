@@ -27,10 +27,12 @@ const DesktopTopBar = () => {
                         direction="row"
                         spacing={2}>
                         <IconTextview
+                            link={`tel://+233501597254`}
                             color={"primary.main"}
                             icon={<Phone sx={{color: "primary.main"}}/>}
-                            text="+233270048319"/>
+                            text="+233501597254"/>
                         <IconTextview
+                            link={`mailto://info@supercraftgh.com`}
                             color={"primary.main"}
                             icon={<Email sx={{color: "primary.main"}}/>}
                             text="info@supercraftgh.com"/>
@@ -41,17 +43,7 @@ const DesktopTopBar = () => {
                         <IconTextview
                             color={"primary.main"}
                             icon={<Schedule sx={{color: "primary.main"}}/>}
-                            text="8:30 AM - 5:30 PM"
-                        />
-                        <IconTextview
-                            color={"primary.main"}
-                            icon={<CalendarToday sx={{color: "primary.main"}}/>}
-                            text="Saturday"
-                        />
-                        <IconTextview
-                            color={"primary.main"}
-                            icon={<Schedule sx={{color: "primary.main"}}/>}
-                            text="8:30 AM - 5:30 PM"
+                            text="8:00 AM - 5:00 PM"
                         />
                     </Stack>
                 </Grid>

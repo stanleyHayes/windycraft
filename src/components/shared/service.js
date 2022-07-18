@@ -3,23 +3,18 @@ import {grey} from "@mui/material/colors";
 
 const Service = ({service}) => {
     return (
-        <Card elevation={0}>
+        <Card elevation={0} sx={{height: '100%'}}>
             <CardMedia
-                sx={{height: 300, objectFit: 'cover', objectPosition: 'center'}}
+                sx={{height: 200, objectFit: 'cover', objectPosition: 'center'}}
                 component="img"
                 src={service.image}
                 alt={service.title}/>
-            <CardContent
-                sx={{
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    px: 8
-                }}>
-                <Typography align="center" variant="h5" mb={2}>{service.title}</Typography>
+            <CardContent>
+                <Typography align="center" variant="h6" mb={2}>{service.title}</Typography>
                 <Typography
                     sx={{color: grey['600'], fontWeight: 500}}
                     align="center"
-                    paragraph={true}>
+                    variant="body2">
                     {service.description}
                 </Typography>
             </CardContent>

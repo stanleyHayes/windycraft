@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc1e8471-6238-4e8e-9a04-68c240c01df9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/windycraft.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/headers/nav-bar/desktop-header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headers/nav-bar/desktop-header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/headers/top-bar/desktop-top-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headers/top-bar/desktop-top-bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/core-value.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/core-value.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/home-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +45,8 @@
       <option name="presentableId" value="Default" />
       <updated>1655987830160</updated>
       <workItem from="1655987831895" duration="591000" />
-      <workItem from="1656230747344" duration="332000" />
+      <workItem from="1656230747344" duration="571000" />
+      <workItem from="1657971594394" duration="593000" />
     </task>
     <servers />
   </component>

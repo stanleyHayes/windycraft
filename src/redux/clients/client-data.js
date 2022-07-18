@@ -1,47 +1,32 @@
 export const clients = [
     {
         image: "/assets/demo-team.png",
-        name: 'Diam nonumy',
+        name: 'Fiesta Royale Hote',
         website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
     },
     {
         image: "/assets/download.png",
-        name: 'Diam nonumy',
+        name: 'The Greens (Ghana)',
         website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
     },
     {
         image: "/assets/flower-symbol.png",
-        name: 'Diam nonumy',
+        name: 'Electro Darko House Limited (EDH)',
         website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
     },
     {
         image: "/assets/middle.png",
-        name: 'Diam nonumy',
+        name: 'Clifton Homes',
         website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
     },
     {
         image: "/assets/phoenix-art.png",
-        name: 'Diam nonumy',
+        name: 'East Airport International School',
         website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
     },
     {
         image: "/assets/silhouette-wings.png",
-        name: 'Diam nonumy',
-        website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
-    },
-    {
-        image: "/assets/universal-studios.png",
-        name: 'Diam nonumy',
-        website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
-    },
-    {
-        image: "/assets/phoenix-art.png",
-        name: 'Diam nonumy',
-        website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
-    },
-    {
-        image: "/assets/middle.png",
-        name: 'Diam nonumy',
+        name: 'Global lighting',
         website: "Diam nonumy eirmod tempor invidunt utlabore et dolore magna aliquyam erat.",
     },
 ];

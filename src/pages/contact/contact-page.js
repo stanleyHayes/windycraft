@@ -10,7 +10,6 @@ import {
     Container,
     Grid,
     LinearProgress,
-    Stack,
     TextField,
     Typography
 } from "@mui/material";
@@ -124,16 +123,30 @@ const ContactPage = () => {
                     <Container>
                         <Grid container={true} spacing={3}>
                             <Grid item={true} xs={12} sm={6} md={3}>
-                                <ContactCard icon={<Email/>} label="Email" value="example@example.com"/>
+                                <ContactCard 
+                                link={`mailto://info@supercraftgh.com`} 
+                                icon={<Email/>} label="Email" value="info@supercraftgh.com"/>
                             </Grid>
                             <Grid item={true} xs={12} sm={6} md={3}>
-                                <ContactCard icon={<Phone/>} label="Phone" value="+233270048319"/>
+                                <ContactCard 
+                                    link={`tel://+233501597254`} 
+                                    icon={<Phone/>} 
+                                    label="Phone" 
+                                    value="+233501597254"
+                                />
                             </Grid>
                             <Grid item={true} xs={12} sm={6} md={3}>
-                                <ContactCard icon={<LocationCity/>} label="Address" value="Haatso Agbogba, Accra"/>
+                                <ContactCard
+                                     icon={<LocationCity/>}
+                                    label="Address" 
+                                    value="Oyarifa - Yellow House(Aburi road)"
+                                    />
                             </Grid>
                             <Grid item={true} xs={12} sm={6} md={3}>
-                                <ContactCard icon={<LocalPostOffice/>} label="Post Office" value="Box 410, Accra"/>
+                                <ContactCard 
+                                    icon={<LocalPostOffice/>} 
+                                    label="Post Office" 
+                                    value="P.O.Box AF 1094,Adenta-Accra"/>
                             </Grid>
                         </Grid>
                     </Container>
@@ -167,7 +180,7 @@ const ContactPage = () => {
                                                     Send us a message
                                                 </Typography>
 
-                                                <Grid container={true} spacing={0.5}>
+                                                <Grid container={true} spacing={2}>
                                                     <Grid item={true} xs={12} md={6}>
                                                         <TextField
                                                             required={true}

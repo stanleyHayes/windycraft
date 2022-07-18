@@ -4,8 +4,6 @@ import {makeStyles} from "@mui/styles";
 import {
     Facebook,
     Instagram,
-    Twitter,
-    YouTube
 } from "@mui/icons-material";
 
 const MobileTopBar = () => {
@@ -27,26 +25,16 @@ const MobileTopBar = () => {
                 justifyContent="space-around"
                 alignItems="center">
                 <Grid item={true}>
-                    <MUILink><Twitter
+                    <MUILink  href="#" underline="none" target="_blank"><Facebook
                         sx={{
                             color: "primary.main",
                             marginRight: 1
                         }}/></MUILink>
-                    <MUILink><Facebook
+                    <MUILink href="#" underline="none" target="_blank"><Instagram
                         sx={{
                             color: "primary.main",
                             marginRight: 1
                         }}/></MUILink>
-                    <MUILink><Instagram
-                        sx={{
-                            color: "primary.main",
-                            marginRight: 1
-                        }}/></MUILink>
-                    <MUILink><YouTube
-                        sx={{
-                            color: "primary.main"
-                        }}
-                    /></MUILink>
                 </Grid>
             </Grid>
         </Toolbar>

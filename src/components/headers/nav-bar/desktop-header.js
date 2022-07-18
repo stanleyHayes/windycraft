@@ -1,10 +1,10 @@
 import React from "react";
-import {Grid, Link as MUILink, Stack, Toolbar, Typography} from "@mui/material";
+import {Grid, Link as MUILink, Stack, Toolbar} from "@mui/material";
 import {makeStyles} from "@mui/styles";
 import LinkItem from "../../shared/link-item";
 import {Link} from "react-router-dom";
-import {grey} from "@mui/material/colors";
-import {Facebook, Instagram, Twitter, YouTube} from "@mui/icons-material";
+import {Facebook, Instagram} from "@mui/icons-material";
+import logo from "./../../../assets/images/logo.png";
 
 const DesktopHeader = () => {
     const useStyles = makeStyles(theme => {
@@ -24,13 +24,8 @@ const DesktopHeader = () => {
         <Toolbar className={classes.toolbar} variant="regular">
             <Grid container={true} justifyContent="space-around" alignItems="center">
                 <Grid item={true}>
-                    <Link to="/" className={classes.link}>
-                        <Typography
-                            sx={{color: grey['300']}}
-                            variant="h4"
-                            className={classes.brand}>
-                            Super Craft
-                        </Typography>
+                <Link to="/" className={classes.link}>
+                        <img src={logo} alt="logo" style={{width: 50, height: 50}} />
                     </Link>
                 </Grid>
                 <Grid item={true}>
@@ -40,11 +35,11 @@ const DesktopHeader = () => {
                         <LinkItem label="Services" path="/services"/>
                         <LinkItem label="Contact" path="/contact"/>
                         {/*<LinkItem label="Portfolio" path="/portfolio"/>*/}
-                        <LinkItem label="Testimonial" path="/testimonials"/>
+                        {/* <LinkItem label="Testimonial" path="/testimonials"/> */}
                     </Stack>
                 </Grid>
                 <Grid item={true}>
-                    <MUILink><Twitter
+                    <MUILink  href="#" underline="none" target="_blank"><Facebook
                         sx={{
                             color: "primary.main",
                             marginRight: 1,
@@ -53,7 +48,7 @@ const DesktopHeader = () => {
                             p: .5,
                             fontSize: 32
                         }}/></MUILink>
-                    <MUILink><Facebook
+                    <MUILink  href="#" underline="none" target="_blank"><Instagram
                         sx={{
                             color: "primary.main",
                             marginRight: 1,
@@ -62,25 +57,6 @@ const DesktopHeader = () => {
                             p: .5,
                             fontSize: 32
                         }}/></MUILink>
-                    <MUILink><Instagram
-                        sx={{
-                            color: "primary.main",
-                            marginRight: 1,
-                            backgroundColor: 'secondary.main',
-                            borderRadius: 1,
-                            p: .5,
-                            fontSize: 32
-                        }}/></MUILink>
-                    <MUILink><YouTube
-                        sx={{
-                            color: "primary.main",
-                            marginRight: 1,
-                            backgroundColor: 'secondary.main',
-                            borderRadius: 1,
-                            p: .5,
-                            fontSize: 32
-                        }}
-                    /></MUILink>
                 </Grid>
             </Grid>
         </Toolbar>

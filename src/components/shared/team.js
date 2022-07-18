@@ -10,13 +10,10 @@ const Team = ({team}) => {
                 component="img"
                 src={team.image}
                 alt={team.title}/>
-            <CardContent
-                sx={{
-                    padding: 4
-                }}>
-                <Typography align="center" variant="h5" mb={1}>{team.name}</Typography>
+            <CardContent>
+                <Typography align="center" variant="h6" mb={1}>{team.name}</Typography>
                 <Typography
-                    sx={{color: grey['500']}}
+                    sx={{color: grey['500'], textTransform: 'uppercase'}}
                     align="center"
                     variant="body2"
                     mb={2}>

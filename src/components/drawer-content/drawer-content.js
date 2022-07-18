@@ -1,5 +1,5 @@
 import {Button, Container, Divider, Stack, Typography} from "@mui/material";
-import {BusinessCenter, Close, ContactPage, Favorite, Home, Info} from "@mui/icons-material";
+import {BusinessCenter, Close, ContactPage,  Home, Info} from "@mui/icons-material";
 import {UI_ACTION_CREATORS} from "../../redux/ui/ui-action-creators";
 import {useDispatch} from "react-redux";
 import SideBarLinkItem from "../shared/side-bar-link-item";
@@ -33,7 +33,7 @@ const DrawerContent = () => {
                     color: 'secondary.main'
                 }}
                 mb={2}
-                variant="h4">Windy Craft</Typography>
+                variant="h4">Super Craft</Typography>
             <Typography
                 sx={{
                     color: 'secondary.main',
@@ -41,7 +41,7 @@ const DrawerContent = () => {
                 }}
                 mb={4}
                 variant="body1">
-                Slider summary of services
+                The home of blacksmith
             </Typography>
 
             <Stack direction="column" divider={<Divider/>} spacing={2}>
@@ -102,7 +102,7 @@ const DrawerContent = () => {
                 {/*    label="Portfolio"*/}
                 {/*    path="/portfolio"*/}
                 {/*/>*/}
-                <SideBarLinkItem
+                {/* <SideBarLinkItem
                     icon={<Favorite
                         sx={{
                             color: "secondary.main",
@@ -115,7 +115,7 @@ const DrawerContent = () => {
                     />}
                     label="Testimonial"
                     path="/testimonials"
-                />
+                /> */}
                 <SideBarLinkItem
                     icon={<ContactPage
                         sx={{
