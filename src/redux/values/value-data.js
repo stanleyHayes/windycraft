@@ -2,33 +2,28 @@ import {Light} from "@mui/icons-material";
 
 export const values = [
     {
-        name: "Driveway Gates",
-        description: "Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.",
+        name: "Integrity and honesty",
+        description: "We do what we say we will do",
         icon: <Light />,
     },
     {
-        name: "Driveway Gates",
-        description: "Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.",
+        name: "Commitment to success",
+        description: "We endeavor to exceed customer expectations",
         icon: <Light />,
     },
     {
-        name: "Driveway Gates",
-        description: "Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.",
+        name: "Virtue",
+        description: "We believe in being an upright and dependable company that focuses on quality",
         icon: <Light />,
     },
     {
-        name: "Driveway Gates",
-        description: "Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.",
+        name: "Excellence",
+        description: "Ingenuinly execute our work so that we provide a high-quality finished product and superb customer service        ",
         icon: <Light />,
     },
     {
-        name: "Driveway Gates",
-        description: "Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.",
-        icon: <Light />,
-    },
-    {
-        name: "Driveway Gates",
-        description: "Complex jobs. Difficult installations. Artistic beauty. Creativity is found across our wide breadth of work.",
+        name: "Safety",
+        description: "We protect our environment and ourselves by following  strict safety protocols.",
         icon: <Light />,
     },
 ]
